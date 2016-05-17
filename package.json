@@ -1,0 +1,13 @@
+{
+  "name": "roomie_iOS",
+  "version": "0.0.1",
+  "dependencies": {
+    "body-parser": "latest",
+    "express": "latest",
+    "mongoose": "latest",
+    "socket.io": "latest",
+    "passport" : "latest",         
+    "passport-local" : "latest",
+    "bcrypt-nodejs" : "latest"
+	}
+}
