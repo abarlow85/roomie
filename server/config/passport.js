@@ -50,7 +50,6 @@ module.exports = function(passport) {
             	newUser.name = name;
             	newUser.email = email;
             	newUser.password = newUser.generateHash(password);
-            	newUser.room = room;
             	newUser.save(function(err) {
             		if (err) {
             			console.log(err);
