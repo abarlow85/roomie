@@ -9,7 +9,7 @@
 import Foundation
 class TaskModel {
     static func getTasksForRoom(completionHandler: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void){
-        let url = NSURL (string: "http://localhost:8000/")
+        let url = NSURL (string: "http://localhost:8000/tasks")
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: completionHandler)
         task.resume()
