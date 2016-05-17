@@ -9,5 +9,5 @@ var messageSchema = new mongoose.Schema({
 	created_at: {type: Date, default: new Date}
 });
 
-var Message = mongoose.model('User', messageSchema);
+var Message = mongoose.model('Message', messageSchema);
 
