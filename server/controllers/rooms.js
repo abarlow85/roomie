@@ -28,7 +28,7 @@ module.exports = (function(){
 		},
 
 		create: function(req, res){
-			var room = new Room({name: req.body.name, user: req.body.user, created_at: new Date});
+			var room = new Room({name: req.body.name, users: req.body.user._id, created_at: new Date});
 			room.save(function(err, room){
 				if(err){
 					console.log(err.errors);

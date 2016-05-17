@@ -16,7 +16,7 @@ module.exports = (function(){
 		},
 
 		create: function(req, res) {
-			var task = new Task({objective: req.body.objective, expiration_date: req.body.expiration_date, users: req.body.users, created_at: new Date});
+			var task = new Task({objective: req.body.objective, expiration_date: req.body.expiration_date, _room: req.body.room._id, users: req.body.users, created_at: new Date});
 			task.save(function(err, task){
 				if (err){
 					console.log(err.errors);
@@ -25,7 +25,7 @@ module.exports = (function(){
 					console.log('succesfully created task');
 					res.json(task);
 				}
-				Room.findOneAndUpdate({_id:req.body._room._id}, {'$push': {tasks: task._id}}).exec(function(err, answers){
+				Room.findOneAndUpdate({_id:req.body._room._id}, {'$push': {tasks: task._id}}).exec(function(err, tasks){
 					if(err){
 						console.log('error updating task to room');
 					} else{
@@ -54,6 +54,21 @@ module.exports = (function(){
 				} else {
 					console.log('successfully removed task!');
 					res.json(true);
+				}
+			})
+			Room.findOneAndUpdate({_id: req.body.room._id}, {'$pull': {tasks: task._id}}).exec(function(err, tasks){
+				if(err){
+					console.log('cannot update task information');
+				} else {
+					console.log('successfully updated task information');
+					res.json(tasks);
+				}
+			})
+			Message.find({_task: req.params.id}, function(err, messages){
+				if(err){
+					console.log('error')
+				} else {
+					
 				}
 			})
 		}
