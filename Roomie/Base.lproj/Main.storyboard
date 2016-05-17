@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Roomie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Roomie" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -73,6 +73,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GXw-S0-bgf">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="RO8-Pv-8iv">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZWC-WZ-Qbc">
+                                <rect key="frame" x="20" y="7" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <segue destination="eBo-sf-2so" kind="show" identifier="LoginSegue" id="Dyh-Cj-ozf"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New User? Register Now" id="dNl-RR-siM">
                             <connections>
                                 <segue destination="7ma-3q-PtH" kind="show" id="Ajg-oi-ZZL"/>
@@ -197,10 +207,10 @@
             </objects>
             <point key="canvasLocation" x="1919" y="1070"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Task View Controller-->
         <scene sceneID="UsA-3H-gyS">
             <objects>
-                <tableViewController id="Npt-vu-4gD" sceneMemberID="viewController">
+                <tableViewController id="Npt-vu-4gD" customClass="TaskViewController" customModule="Roomie" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jKm-fT-tKd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -224,17 +234,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ewS-tg-yxx">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="Lvk-2T-KfW"/>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="Lvk-2T-KfW">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="LogoutSegue" id="LWo-Mr-TlG"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axP-9l-MFl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1211" y="1858"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Message View Controller-->
         <scene sceneID="wpE-vl-Vf3">
             <objects>
-                <tableViewController id="EU3-EA-1Es" sceneMemberID="viewController">
+                <tableViewController id="EU3-EA-1Es" customClass="MessageViewController" customModule="Roomie" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="m73-Py-ui0">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -255,8 +269,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Xvs-Az-j1y">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="uHq-gt-hnA"/>
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="XbU-Nc-pGC"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="uHq-gt-hnA">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="EU3-EA-1Es" id="Smw-bj-CAN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="XbU-Nc-pGC">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="LogoutSegue" id="UHc-Om-HsP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZqT-uT-HvB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -318,4 +340,7 @@
             <point key="canvasLocation" x="1927" y="1858"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="LWo-Mr-TlG"/>
+    </inferredMetricsTieBreakers>
 </document>

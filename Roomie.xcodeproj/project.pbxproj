@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		59105D171CEBCA1800DDDFD5 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59105D161CEBCA1800DDDFD5 /* TaskModel.swift */; };
 		59105D191CEBCA9C00DDDFD5 /* BackButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59105D181CEBCA9C00DDDFD5 /* BackButtonDelegate.swift */; };
+		59105D1B1CEBD02E00DDDFD5 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59105D1A1CEBD02E00DDDFD5 /* MessageViewController.swift */; };
+		59105D1D1CEBD42500DDDFD5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59105D1C1CEBD42500DDDFD5 /* LoginViewController.swift */; };
 		70EC0F611CEB988100B7BAB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EC0F601CEB988100B7BAB8 /* AppDelegate.swift */; };
-		70EC0F631CEB988100B7BAB8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EC0F621CEB988100B7BAB8 /* ViewController.swift */; };
+		70EC0F631CEB988100B7BAB8 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EC0F621CEB988100B7BAB8 /* TaskViewController.swift */; };
 		70EC0F661CEB988100B7BAB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70EC0F641CEB988100B7BAB8 /* Main.storyboard */; };
 		70EC0F681CEB988200B7BAB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70EC0F671CEB988200B7BAB8 /* Assets.xcassets */; };
 		70EC0F6B1CEB988200B7BAB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70EC0F691CEB988200B7BAB8 /* LaunchScreen.storyboard */; };
@@ -38,9 +40,11 @@
 /* Begin PBXFileReference section */
 		59105D161CEBCA1800DDDFD5 /* TaskModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskModel.swift; path = ../TaskModel.swift; sourceTree = "<group>"; };
 		59105D181CEBCA9C00DDDFD5 /* BackButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackButtonDelegate.swift; path = ../BackButtonDelegate.swift; sourceTree = "<group>"; };
+		59105D1A1CEBD02E00DDDFD5 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		59105D1C1CEBD42500DDDFD5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		70EC0F5D1CEB988100B7BAB8 /* Roomie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roomie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70EC0F601CEB988100B7BAB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		70EC0F621CEB988100B7BAB8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		70EC0F621CEB988100B7BAB8 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		70EC0F651CEB988100B7BAB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		70EC0F671CEB988200B7BAB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70EC0F6A1CEB988200B7BAB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,10 +105,12 @@
 		70EC0F5F1CEB988100B7BAB8 /* Roomie */ = {
 			isa = PBXGroup;
 			children = (
-				59105D161CEBCA1800DDDFD5 /* TaskModel.swift */,
-				59105D181CEBCA9C00DDDFD5 /* BackButtonDelegate.swift */,
 				70EC0F601CEB988100B7BAB8 /* AppDelegate.swift */,
-				70EC0F621CEB988100B7BAB8 /* ViewController.swift */,
+				59105D1C1CEBD42500DDDFD5 /* LoginViewController.swift */,
+				59105D161CEBCA1800DDDFD5 /* TaskModel.swift */,
+				70EC0F621CEB988100B7BAB8 /* TaskViewController.swift */,
+				59105D1A1CEBD02E00DDDFD5 /* MessageViewController.swift */,
+				59105D181CEBCA9C00DDDFD5 /* BackButtonDelegate.swift */,
 				70EC0F641CEB988100B7BAB8 /* Main.storyboard */,
 				70EC0F671CEB988200B7BAB8 /* Assets.xcassets */,
 				70EC0F691CEB988200B7BAB8 /* LaunchScreen.storyboard */,
@@ -263,10 +269,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59105D1D1CEBD42500DDDFD5 /* LoginViewController.swift in Sources */,
 				59105D171CEBCA1800DDDFD5 /* TaskModel.swift in Sources */,
-				70EC0F631CEB988100B7BAB8 /* ViewController.swift in Sources */,
+				70EC0F631CEB988100B7BAB8 /* TaskViewController.swift in Sources */,
 				70EC0F611CEB988100B7BAB8 /* AppDelegate.swift in Sources */,
 				59105D191CEBCA9C00DDDFD5 /* BackButtonDelegate.swift in Sources */,
+				59105D1B1CEBD02E00DDDFD5 /* MessageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
