@@ -32,7 +32,7 @@ module.exports = (function(){
 				if(err){
 					console.log('cannot add user to room');
 				} else{
-					User.findByIdandUpdate(user, {$push: {_room: req.body._id}}, {new: true}, function(err, user){
+					User.findByIdAndUpdate(req.body.user, {$push: {_room: req.body._id}}, {new: true}, function(err, user){
 						if (err) {
 							console.log(err)
 						} else {

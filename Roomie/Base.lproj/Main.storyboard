@@ -94,12 +94,14 @@
                         <outlet property="emailTextField" destination="LJX-g3-7Bo" id="xzd-sk-DBp"/>
                         <outlet property="errorLabel" destination="iBp-1b-7lA" id="Tvx-6g-tCL"/>
                         <outlet property="passwordTextField" destination="IeT-ra-LFZ" id="NA4-58-rzC"/>
-                        <segue destination="eBo-sf-2so" kind="show" identifier="LoginSegue" id="RbZ-Ex-wdX"/>
+                        <segue destination="eBo-sf-2so" kind="show" identifier="LoginSegue" id="xRZ-1L-GDB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1209" y="808"/>
+
+            <point key="canvasLocation" x="1184" y="808"/>
+
         </scene>
         <!--Register View Controller-->
         <scene sceneID="7wP-lj-dDO">
@@ -510,7 +512,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RbZ-Ex-wdX"/>
-        <segue reference="LWo-Mr-TlG"/>
+        <segue reference="xRZ-1L-GDB"/>
+        <segue reference="UHc-Om-HsP"/>
     </inferredMetricsTieBreakers>
 </document>

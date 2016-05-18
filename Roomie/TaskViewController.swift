@@ -13,19 +13,23 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
     var roomTasks = [NSDictionary]()
     override func viewDidLoad() {
         let prefs = NSUserDefaults.standardUserDefaults()
-        print(prefs.valueForKey("currentRoom"))
-        var room = prefs.stringForKey("currentRoom")
+        var room = prefs.stringForKey("currentRoom")!
 
-        TaskModel.getTasksForRoom(room!) {
+        TaskModel.getTasksForRoom(room) {
             data, response, error in
             do {
-                if let tasks = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSArray {
+                if let room = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSMutableDictionary {
+                    print("room information:")
+                    print(room)
+                    let tasks = room["tasks"] as! NSArray
                     for task in tasks{
                         let newTask = task as! NSDictionary
-                        print(newTask)
+//                        print(newTask)
                         self.roomTasks.append(newTask)
                     }
-                    self.tableView.reloadData()
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.tableView.reloadData()
+                    })
                 }
             } catch {
                 print("Something went wrong")
