@@ -10,26 +10,41 @@ import UIKit
 
 class newTaskViewController: UIViewController {
     weak var backButtonDelegate: BackButtonDelegate?
+    let prefs = NSUserDefaults.standardUserDefaults()
+
+    @IBOutlet weak var newTaskText: UITextField!
     @IBAction func backButtonPressed(sender: UIBarButtonItem) {
           backButtonDelegate?.back2ButtonPressedFrom(self)
         print("Back")
     }
+    @IBAction func newTaskSubmitted(sender: UIButton) {
+        var taskData = NSMutableDictionary()
+        print(newTaskText.text)
+        taskData["objective"] = newTaskText.text!
+        taskData["expiration_date"] = NSDate()
+//        TaskModel.addTask(newTaskText.text!) {
+//            data, response, error in
+//            do {
+//                
+//            } catch {
+//                print("Something went wrong")
+//            }
+//        }
+
+    }
        override func viewDidLoad() {
-//        TaskModel.addTask(task) {
+        var room = prefs.stringForKey("currentRoom")
+//        TaskModel.getTasksForRoom(room!) {
 //            data, response, error in
 //            do {
 //                if let tasks = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSArray {
-//                    for task in tasks{
-//                        let newTask = task as! NSDictionary
-//                        print(newTask)
-//                        self.roomTasks.append(newTask)
-//                    }
-//                    self.tableView.reloadData()
+//                    
 //                }
 //            } catch {
 //                print("Something went wrong")
 //            }
 //        }
+
         super.viewDidLoad()
     }
     

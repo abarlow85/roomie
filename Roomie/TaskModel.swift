@@ -14,4 +14,10 @@ class TaskModel {
         let task = session.dataTaskWithURL(url!, completionHandler: completionHandler)
         task.resume()
     }
+    static func addTask(objective:String, completionHandler: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void){
+        let url = NSURL (string: "http://localhost:8000/tasks/create")
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url!, completionHandler: completionHandler)
+        task.resume()
+    }
 }

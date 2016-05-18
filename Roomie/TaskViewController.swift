@@ -12,7 +12,6 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
     let prefs = NSUserDefaults.standardUserDefaults()
     var roomTasks = [NSDictionary]()
     override func viewDidLoad() {
-        let prefs = NSUserDefaults.standardUserDefaults()
         print(prefs.valueForKey("currentRoom"))
         var room = prefs.stringForKey("currentRoom")
 
