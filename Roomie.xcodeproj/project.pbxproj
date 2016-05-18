@@ -11,6 +11,7 @@
 		59105D1D1CEBD42500DDDFD5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59105D1C1CEBD42500DDDFD5 /* LoginViewController.swift */; };
 		59105D1F1CEBDE3300DDDFD5 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59105D1E1CEBDE3300DDDFD5 /* TaskModel.swift */; };
 		59105D211CEBDE4000DDDFD5 /* BackButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59105D201CEBDE4000DDDFD5 /* BackButtonDelegate.swift */; };
+		598F83011CECE79800A1158B /* newTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598F83001CECE79800A1158B /* newTaskViewController.swift */; };
 		70CD069D1CEBBD9700D42611 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD069C1CEBBD9700D42611 /* RegisterViewController.swift */; };
 		70CD069F1CEBCA0E00D42611 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD069E1CEBCA0E00D42611 /* UserModel.swift */; };
 		70CD06A31CEBF11900D42611 /* RoomSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD06A21CEBF11900D42611 /* RoomSelectionViewController.swift */; };
@@ -46,6 +47,7 @@
 		59105D1C1CEBD42500DDDFD5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		59105D1E1CEBDE3300DDDFD5 /* TaskModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		59105D201CEBDE4000DDDFD5 /* BackButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackButtonDelegate.swift; sourceTree = "<group>"; };
+		598F83001CECE79800A1158B /* newTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newTaskViewController.swift; sourceTree = "<group>"; };
 		70CD069C1CEBBD9700D42611 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		70CD069E1CEBCA0E00D42611 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		70CD06A21CEBF11900D42611 /* RoomSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSelectionViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				59105D201CEBDE4000DDDFD5 /* BackButtonDelegate.swift */,
 				70EC0F601CEB988100B7BAB8 /* AppDelegate.swift */,
 				70EC0F621CEB988100B7BAB8 /* TaskViewController.swift */,
+				598F83001CECE79800A1158B /* newTaskViewController.swift */,
 				70CD069C1CEBBD9700D42611 /* RegisterViewController.swift */,
 				70CD06A21CEBF11900D42611 /* RoomSelectionViewController.swift */,
 				A62146D51CEC225E00EAB641 /* RoomModel.swift */,
@@ -289,6 +292,7 @@
 				70EC0F631CEB988100B7BAB8 /* TaskViewController.swift in Sources */,
 				70CD069F1CEBCA0E00D42611 /* UserModel.swift in Sources */,
 				59105D211CEBDE4000DDDFD5 /* BackButtonDelegate.swift in Sources */,
+				598F83011CECE79800A1158B /* newTaskViewController.swift in Sources */,
 				70EC0F611CEB988100B7BAB8 /* AppDelegate.swift in Sources */,
 				59105D1B1CEBD02E00DDDFD5 /* MessageViewController.swift in Sources */,
 			);
