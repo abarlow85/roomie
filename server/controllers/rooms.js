@@ -28,17 +28,31 @@ module.exports = (function(){
 		},
 
 		create: function(req, res){
-			var room = new Room({name: req.body.name, users: req.body.user._id, created_at: new Date});
+			var room = new Room({name: req.body.name, category: req.body.category});
 			room.save(function(err, room){
 				if(err){
 					console.log(err.errors);
 					console.log('cannot add room');
 				} else{
 					console.log("successfully added room")
-					res.json(room);
+					Room.findByIdAndUpdate(room._id, {$push: {users: req.body.user}}, {new: true}, function(err, newRoom){
+						if (err) {
+							console.log(err);
+						} else {
+							console.log("room updated");
+							User.findByIdAndUpdate(req.body.user, {$push: {_room: room._id}}, {new: true}, function(err){
+								if (err) {
+									console.log(err);
+								} else {
+									console.log("user updated");
+									res.json(newRoom);
+								}
+							})
+							
+						}
+					})
 				}
 			})
 		}
-
 	}
 })();

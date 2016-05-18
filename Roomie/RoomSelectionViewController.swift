@@ -20,6 +20,7 @@ class RoomSelectionViewController: UITableViewController {
         print("got to room page")
         print(prefs.valueForKey("currentUser")!)
         super.viewDidLoad()
+        
     }
 
     func showAllRooms(){
