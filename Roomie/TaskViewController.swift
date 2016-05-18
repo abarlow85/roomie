@@ -13,7 +13,7 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
     var roomTasks = [NSDictionary]()
     var roomUsers = [NSDictionary]()
     override func viewDidLoad() {
-
+        print("taskView")
         let prefs = NSUserDefaults.standardUserDefaults()
         var room = prefs.stringForKey("currentRoom")!
 
@@ -22,7 +22,7 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
             do {
                 if let room = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSMutableDictionary {
                     print("room information:")
-                    print(room)
+//                    print(room)
                     let tasks = room["tasks"] as! NSArray
                     for task in tasks{
                         let newTask = task as! NSDictionary

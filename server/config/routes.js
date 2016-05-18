@@ -49,8 +49,8 @@ module.exports = function(app, passport) {
 
 	app.post('/tasks/create', function(req, res){
 		console.log("creating task");
-		console.log(req.body);
-		// tasks.create(req, res);
+		// console.log(req.body);
+		tasks.create(req, res);
 	})
 
 	app.post('/tasks/update', function(req, res){

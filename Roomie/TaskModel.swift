@@ -19,13 +19,15 @@ class TaskModel {
             let jsonData = try NSJSONSerialization.dataWithJSONObject(taskData, options: NSJSONWritingOptions.PrettyPrinted)
             let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
             print(jsonString)
-            let url = NSURL(string: "http://localhost:8000/tasks/create")
-            let request = NSMutableURLRequest(URL: url!)
-            request.HTTPMethod = "POST"
-            request.HTTPBody = jsonString.dataUsingEncoding(NSUTF8StringEncoding)
-            let session = NSURLSession.sharedSession()
-            let task = session.dataTaskWithURL(url!, completionHandler: completionHandler)
-            task.resume()
+            if let url = NSURL(string: "http://localhost:8000/tasks/create") {
+                let request = NSMutableURLRequest(URL: url)
+                request.HTTPMethod = "POST"
+                request.HTTPBody = jsonString.dataUsingEncoding(NSUTF8StringEncoding)
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                let session = NSURLSession.sharedSession()
+                let task = session.dataTaskWithRequest(request, completionHandler: completionHandler)
+                task.resume()
+            }
         } catch let error as NSError {
             print(error)
             }

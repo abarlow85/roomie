@@ -16,22 +16,24 @@ module.exports = (function(){
 		},
 
 		create: function(req, res) {
-			var task = new Task({objective: req.body.objective, expiration_date: req.body.expiration_date, _room: req.body.room._id, users: req.body.users, created_at: new Date});
+			var task = new Task({objective: req.body.objective, expiration_date: req.body.expiration_date, _room: req.body._room, users: req.body.users});
 			task.save(function(err, task){
 				if (err){
 					console.log(err.errors);
 					console.log('cannot create task');
 				} else {
 					console.log('succesfully created task');
-					res.json(task);
+					Room.findOneAndUpdate({_id:req.body._room}, {'$push': {tasks: task._id}}, {new: true}).exec(function(err, room){
+						if(err){
+							console.log('error updating task to room');
+						} else{
+							console.log('successfully updated task to room')
+							console.log(room)
+							res.json(room);
+						}
+					});
 				}
-				Room.findOneAndUpdate({_id:req.body._room._id}, {'$push': {tasks: task._id}}).exec(function(err, tasks){
-					if(err){
-						console.log('error updating task to room');
-					} else{
-						console.log('successfully updated task to room')
-					}
-				})
+				
 			});
 		},
 

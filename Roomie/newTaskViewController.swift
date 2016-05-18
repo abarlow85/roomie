@@ -41,11 +41,22 @@ class newTaskViewController: UIViewController, UITableViewDataSource, UITableVie
         TaskModel.addTask(taskData) {
             data, response, error in
             do {
-                print("Success")
+                //                print(response)
+                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSMutableDictionary {
+                    print(jsonResult)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.performSegueWithIdentifier("TaskAddedSegue", sender: jsonResult)
+                    })
+                    
+                }
                 
-            } catch {
-                print("Something went wrong")
+            }catch {
+                print(data)
+                print(response)
+                print(error)
             }
+
+
         }
 
     }

@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var taskSchema = new mongoose.Schema({
 	objective: String,
-	expiration_date: Date,
+	expiration_date: String,
 	_room: {type: Schema.Types.ObjectId, ref: 'Room'},
 	users: [{type: Schema.Types.ObjectId, ref: 'User'}],
 	messages: [{type: Schema.Types.ObjectId, ref: 'Message'}],
