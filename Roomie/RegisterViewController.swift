@@ -23,6 +23,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.passwordTextField.delegate = self
+        errorLabel.text = ""
     }
     
     
@@ -60,19 +61,30 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         UserModel.registerUser(userData, completionHandler: { data, response, error in
          
             do {
-                print(response)
+//                print(response)
                 if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
-                    
-                    let user = jsonResult["user"] as! String
-                    self.prefs.setValue(user, forKey: "currentUser")
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.performSegueWithIdentifier("RoomSelection", sender: jsonResult)
-                    })
+                    print(jsonResult)
+                    if let checkForFail = jsonResult["error"] {
+                        print(checkForFail)
+                        let fail = checkForFail as! String
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.errorLabel.text = fail
+                        })
+                    } else {
+                        let user = jsonResult["user"] as! String
+                        self.prefs.setValue(user, forKey: "currentUser")
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.performSegueWithIdentifier("RoomSelection", sender: jsonResult)
+                        })
+                    }
+                   
                     
                 }
                 
             }catch {
-                print("something is wrong")
+                print(data)
+                print(response)
+                print(error)
             }
         })
         return true

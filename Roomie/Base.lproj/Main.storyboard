@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="width" constant="150" id="5X7-sm-V34"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4m4-EZ-Hap">
                                 <rect key="frame" x="53" y="101" width="46" height="21"/>
@@ -38,7 +38,7 @@
                                     <constraint firstAttribute="width" constant="150" id="Mfh-MA-FrG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gmd-n7-cJS">
                                 <rect key="frame" x="20" y="72" width="47" height="21"/>
@@ -50,6 +50,15 @@
                                 <rect key="frame" x="20" y="135" width="79" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBp-1b-7lA">
+                                <rect key="frame" x="300" y="290" width="0.0" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="3sW-R9-po8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.01026766514" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -64,10 +73,12 @@
                             <constraint firstItem="LJX-g3-7Bo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="33" id="FYL-tp-cVW"/>
                             <constraint firstItem="4m4-EZ-Hap" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="33" id="Pl9-IQ-nG5"/>
                             <constraint firstItem="Jbt-bR-vdd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="RRL-m3-sZl"/>
+                            <constraint firstItem="iBp-1b-7lA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SgY-hb-STM"/>
                             <constraint firstItem="4m4-EZ-Hap" firstAttribute="top" secondItem="Gmd-n7-cJS" secondAttribute="bottom" constant="8" id="WHq-ge-bAW"/>
                             <constraint firstItem="Gmd-n7-cJS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="X8q-uq-Ive"/>
                             <constraint firstItem="IeT-ra-LFZ" firstAttribute="top" secondItem="LJX-g3-7Bo" secondAttribute="bottom" constant="4" id="Xe1-NN-0v4"/>
                             <constraint firstItem="IeT-ra-LFZ" firstAttribute="leading" secondItem="Jbt-bR-vdd" secondAttribute="trailing" constant="8" id="Zrz-W3-Y1g"/>
+                            <constraint firstItem="iBp-1b-7lA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kjc-ci-FhK"/>
                             <constraint firstItem="Gmd-n7-cJS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pni-Lv-GKt"/>
                             <constraint firstItem="LJX-g3-7Bo" firstAttribute="leading" secondItem="4m4-EZ-Hap" secondAttribute="trailing" constant="8" id="zKx-9a-QAU"/>
                         </constraints>
@@ -89,6 +100,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailTextField" destination="LJX-g3-7Bo" id="xzd-sk-DBp"/>
+                        <outlet property="errorLabel" destination="iBp-1b-7lA" id="Tvx-6g-tCL"/>
+                        <outlet property="passwordTextField" destination="IeT-ra-LFZ" id="NA4-58-rzC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -310,7 +326,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="2Md-Sw-BZP">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Md-Sw-BZP" id="JOw-J6-oLP">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -366,6 +382,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="535-8b-9fm"/>
+        <segue reference="UHc-Om-HsP"/>
     </inferredMetricsTieBreakers>
 </document>

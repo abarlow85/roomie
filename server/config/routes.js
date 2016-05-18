@@ -8,12 +8,26 @@ module.exports = function(app, passport) {
 // User routes
 	app.post('/register', passport.authenticate('local-register', {
         successRedirect: '/success',
-        failureRedirect: '/register'
-    }))
+        failureRedirect: '/failure',
+        failureFlash: true
+    }));
+
+    app.post('/login', passport.authenticate('local-login', {
+        successRedirect: '/success',
+        failureRedirect: '/failure',
+        failureFlash: true
+    }));
 
     app.get('/success', function(req, res){
     	res.json(req.session.passport)
-    })
+    });
+
+    app.get('/failure', function(req, res){
+    	
+    	var error = req.flash('error')[0];
+    	console.log(error);
+    	res.json({'error': error})
+    });
 
 	app.get('/users', function(req, res){
 		users.show(req, res);

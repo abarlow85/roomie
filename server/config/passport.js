@@ -41,13 +41,14 @@ module.exports = function(passport) {
         // we are checking to see if the user trying to login already exists
         User.findOne({ 'email' :  email }, function(err, user) {
             // if there are any errors, return the error
-            if (err)
+            if (err) {
                 return done(err);
+            }
 
             // check to see if theres already a user with that email
             if (user) {
-                console.log('user exists')
-                return done(null, false, {'error':'That email is already taken.'});
+                req.flash('error', 'That email is already taken.')
+                return done(null, false);
                 // req.json({'error':'That email is already taken.'})
             } else {
 
@@ -79,10 +80,12 @@ module.exports = function(passport) {
     			return done(err);
     		}
     		if (!user) {
-    			return done(null, false, req.json({'error' : 'Incorrect user credentials'}));
+                req.flash('error', 'Incorrect user credentials')
+    			return done(null, false);
     		}
     		if (!user.validPassword(password)) {
-    			return done(null, false, req.json({'error' : 'Incorrect user credentials'}));
+                req.flash('error', 'Incorrect user credentials')
+    			return done(null, false);
     		}
     		return done(null, user);
     	});

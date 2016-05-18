@@ -28,4 +28,21 @@ class UserModel {
         
     }
     
+    static func loginUser(userData: NSMutableDictionary, completionHandler: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void ) {
+        
+        if let url = NSURL(string: "http://localhost:8000/login") {
+            let request = NSMutableURLRequest(URL: url)
+            
+            request.HTTPMethod = "POST"
+            let bodyData = "{\"email\":\"\(userData["email"] as! String)\", \"password\":\"\(userData["password"] as! String)\"}"
+            request.HTTPBody = bodyData.dataUsingEncoding(NSUTF8StringEncoding)
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            let session = NSURLSession.sharedSession()
+            let task = session.dataTaskWithRequest(request, completionHandler: completionHandler)
+            task.resume()
+            
+        }
+        
+    }
+    
 }
