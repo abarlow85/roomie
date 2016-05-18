@@ -8,25 +8,15 @@
 
 import UIKit
 
-class RoomSelectionViewController: UIViewController {
+class RoomSelectionViewController: UITableViewController {
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        print("room selection")
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "LoginSegue"{
-//            let navigationConroller = segue.destinationViewController as! UINavigationController
-//            let controller = navigationConroller.topViewController as! TaskViewController
-//        }
-//    }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        print("room selection view")
     }
+    
     
     
 }
+
 
