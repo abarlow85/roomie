@@ -78,7 +78,9 @@ class RoomSelectionViewController: UITableViewController {
             room = rooms[indexPath.row]
         }
         prefs.setValue(room["_id"], forKey: "currentRoom")
-        
+        let roomId = prefs.valueForKey("currentRoom")! as! String
+        let user = prefs.valueForKey("currentUser")! as! String
+        addToRoom(roomId, user: user)
     }
     
     
@@ -113,7 +115,24 @@ class RoomSelectionViewController: UITableViewController {
         }
     }
     
-//    func addToRoom(withRoomName: String, )
+    func addToRoom(roomId: String, user:String){
+        RoomModel.addToRoom(roomId,user){
+            data, response, error in
+            do{
+                if(data != nil){
+                    if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSMutableArray {
+                        print(jsonResult)
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.tableView.reloadData()
+                        })
+                    }
+                }
+                
+            } catch {
+                print("Something went wrong")
+            }
+        }
+    }
     
 }
 
