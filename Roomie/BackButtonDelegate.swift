@@ -9,4 +9,5 @@
 import UIKit
 protocol BackButtonDelegate: class{
     func backButtonPressedFrom(controller:UITableViewController)
+    func back2ButtonPressedFrom(controller:UIViewController)
 }

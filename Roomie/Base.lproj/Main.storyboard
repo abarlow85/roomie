@@ -210,7 +210,7 @@
             </objects>
             <point key="canvasLocation" x="2162" y="808"/>
         </scene>
-        <!--Task View Controller-->
+        <!--Tasks-->
         <scene sceneID="UsA-3H-gyS">
             <objects>
                 <tableViewController id="Npt-vu-4gD" customClass="TaskViewController" customModule="Roomie" customModuleProvider="target" sceneMemberID="viewController">
@@ -236,17 +236,92 @@
                             <outlet property="delegate" destination="Npt-vu-4gD" id="ro4-GS-xXg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ewS-tg-yxx">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="Lvk-2T-KfW">
+                    <navigationItem key="navigationItem" title="Tasks" id="ewS-tg-yxx" userLabel="Tasks">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Lvk-2T-KfW">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="show" identifier="LogoutSegue" id="LWo-Mr-TlG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ALa-gC-Qbj">
+                            <connections>
+                                <segue destination="SOh-z7-NS8" kind="presentation" id="Q1K-Hp-sKh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axP-9l-MFl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1163" y="1838"/>
+            <point key="canvasLocation" x="1513" y="1872"/>
+        </scene>
+        <!--New Task-->
+        <scene sceneID="o7K-oN-8Gl">
+            <objects>
+                <viewController id="YLL-ab-BDU" customClass="newTaskViewController" customModule="Roomie" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h4C-1e-g9f"/>
+                        <viewControllerLayoutGuide type="bottom" id="mbb-DP-0Mi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VPF-9P-XSt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d3V-hV-7JV">
+                                <rect key="frame" x="20" y="72" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="560" id="Yy7-jb-8dV"/>
+                                    <constraint firstAttribute="height" constant="30" id="e02-yB-07l"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Yy7-jb-8dV"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qyz-Yl-SLo">
+                                <rect key="frame" x="531" y="110" width="49" height="30"/>
+                                <state key="normal" title="Submit"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mbb-DP-0Mi" firstAttribute="top" secondItem="Qyz-Yl-SLo" secondAttribute="bottom" constant="460" id="1TL-na-p4x"/>
+                            <constraint firstItem="Qyz-Yl-SLo" firstAttribute="trailing" secondItem="VPF-9P-XSt" secondAttribute="trailingMargin" id="31h-Yb-Yhi"/>
+                            <constraint firstItem="Qyz-Yl-SLo" firstAttribute="trailing" secondItem="VPF-9P-XSt" secondAttribute="trailingMargin" id="DFP-EG-MM3"/>
+                            <constraint firstItem="Qyz-Yl-SLo" firstAttribute="leading" secondItem="VPF-9P-XSt" secondAttribute="leadingMargin" constant="511" id="DmV-cv-J6V"/>
+                            <constraint firstItem="Qyz-Yl-SLo" firstAttribute="leading" secondItem="VPF-9P-XSt" secondAttribute="leadingMargin" constant="511" id="HFa-2Q-i6L"/>
+                            <constraint firstItem="d3V-hV-7JV" firstAttribute="trailing" secondItem="VPF-9P-XSt" secondAttribute="trailingMargin" id="IEI-nH-mEJ"/>
+                            <constraint firstItem="mbb-DP-0Mi" firstAttribute="top" secondItem="Qyz-Yl-SLo" secondAttribute="bottom" constant="460" id="Qq0-ol-M6Q"/>
+                            <constraint firstItem="d3V-hV-7JV" firstAttribute="leading" secondItem="VPF-9P-XSt" secondAttribute="leadingMargin" id="R5X-9R-QhJ"/>
+                            <constraint firstItem="Qyz-Yl-SLo" firstAttribute="top" secondItem="d3V-hV-7JV" secondAttribute="bottom" constant="8" id="bhu-Hg-jD0"/>
+                            <constraint firstItem="d3V-hV-7JV" firstAttribute="top" secondItem="h4C-1e-g9f" secondAttribute="bottom" constant="8" id="c1z-uD-NpB"/>
+                            <constraint firstItem="Qyz-Yl-SLo" firstAttribute="top" secondItem="d3V-hV-7JV" secondAttribute="bottom" constant="8" id="k0f-JP-fgf"/>
+                            <constraint firstItem="Qyz-Yl-SLo" firstAttribute="top" secondItem="d3V-hV-7JV" secondAttribute="bottom" constant="8" id="xiS-uO-KML"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="31h-Yb-Yhi"/>
+                                <exclude reference="DmV-cv-J6V"/>
+                                <exclude reference="HFa-2Q-i6L"/>
+                                <exclude reference="bhu-Hg-jD0"/>
+                                <exclude reference="xiS-uO-KML"/>
+                                <exclude reference="1TL-na-p4x"/>
+                                <exclude reference="Qq0-ol-M6Q"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Task" id="Wv6-TE-r1e">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="xpb-MI-m0b">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="YLL-ab-BDU" id="xpp-DK-bn3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2vv-NE-iqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2341" y="2780"/>
         </scene>
         <!--Message View Controller-->
         <scene sceneID="wpE-vl-Vf3">
@@ -394,7 +469,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCq-nx-zHE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1945" y="1853"/>
+            <point key="canvasLocation" x="2273" y="1881"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vRW-Vi-Cyy">
@@ -413,6 +488,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uea-nu-Tml" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3030" y="808"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nXU-Et-Sby">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SOh-z7-NS8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="64l-KO-j0W">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YLL-ab-BDU" kind="relationship" relationship="rootViewController" id="Kts-qH-zqQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qg5-6A-RCJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1513" y="2780"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

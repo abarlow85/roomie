@@ -9,16 +9,21 @@
 import UIKit
 
 class TaskViewController: UITableViewController, BackButtonDelegate {
-
+    let prefs = NSUserDefaults.standardUserDefaults()
+    var roomTasks = [NSDictionary]()
     override func viewDidLoad() {
         let prefs = NSUserDefaults.standardUserDefaults()
         print(prefs.valueForKey("currentRoom"))
-        TaskModel.getTasksForRoom() {
+        var room = prefs.stringForKey("currentRoom")
+
+        TaskModel.getTasksForRoom(room!) {
             data, response, error in
             do {
                 if let tasks = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSArray {
                     for task in tasks{
-                        print (task)
+                        let newTask = task as! NSDictionary
+                        print(newTask)
+                        self.roomTasks.append(newTask)
                     }
                     self.tableView.reloadData()
                 }
@@ -35,14 +40,18 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
             let controller = navigationController.topViewController as! MessageViewController
             controller.backButtonDelegate = self
         }
-//        if segue.identifier == "LogoutSegue"{
-//            let navigationConroller = segue.destinationViewController as! UINavigationController
-//            let controller = navigationConroller.topViewController as! LoginViewController
-//        }
+        if segue.identifier == "newTaskSegue" {
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let controller = navigationController.topViewController as! newTaskViewController
+            controller.backButtonDelegate = self
+        }
     }
 
     
     func backButtonPressedFrom(controller: UITableViewController){
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    func back2ButtonPressedFrom(controller: UIViewController){
         dismissViewControllerAnimated(true, completion: nil)
     }
     
