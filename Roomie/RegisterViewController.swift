@@ -10,6 +10,8 @@ import UIKit
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
+    let prefs = NSUserDefaults.standardUserDefaults()
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -23,13 +25,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         self.passwordTextField.delegate = self
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
         var userData = NSMutableDictionary()
         
         if nameTextField.text!.isEmpty {
@@ -56,10 +58,23 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         
         UserModel.registerUser(userData, completionHandler: { data, response, error in
-         print("test")
+         
+            do {
+                print(response)
+                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
+                    
+                    let user = jsonResult["user"] as! String
+                    self.prefs.setValue(user, forKey: "currentUser")
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.performSegueWithIdentifier("RoomSelection", sender: jsonResult)
+                    })
+                    
+                }
+                
+            }catch {
+                print("something is wrong")
+            }
         })
-        
-        
         return true
     }
     

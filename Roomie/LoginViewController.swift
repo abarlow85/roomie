@@ -15,8 +15,8 @@ class LoginViewController: UIViewController {
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
                 if segue.identifier == "LoginSegue"{
-                    let navigationConroller = segue.destinationViewController as! UINavigationController
-                    let controller = navigationConroller.topViewController as! TaskViewController
+                    let navigationController = segue.destinationViewController as! UINavigationController
+                    let controller = navigationController.topViewController as! TaskViewController
                 }
     }
     

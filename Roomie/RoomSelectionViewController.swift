@@ -1,0 +1,32 @@
+//
+//  RoomSelectionViewController.swift
+//  Roomie
+//
+//  Created by Alec Barlow on 5/17/16.
+//  Copyright © 2016 Alec Barlow. All rights reserved.
+//
+
+import UIKit
+
+class RoomSelectionViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("room selection")
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "LoginSegue"{
+//            let navigationConroller = segue.destinationViewController as! UINavigationController
+//            let controller = navigationConroller.topViewController as! TaskViewController
+//        }
+//    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+}
+

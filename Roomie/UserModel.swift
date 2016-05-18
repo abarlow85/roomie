@@ -13,7 +13,7 @@ class UserModel {
     static func registerUser(userData: NSMutableDictionary, completionHandler: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void ) {
         
         print(userData);
-        if let url = NSURL(string: "http://localhost:8000/login") {
+        if let url = NSURL(string: "http://localhost:8000/register") {
             let request = NSMutableURLRequest(URL: url)
             
             request.HTTPMethod = "POST"

@@ -8,6 +8,7 @@
     "socket.io": "latest",
     "passport" : "latest",         
     "passport-local" : "latest",
-    "bcrypt-nodejs" : "latest"
+    "bcrypt-nodejs" : "latest",
+    "express-session": "latest" 
 	}
 }

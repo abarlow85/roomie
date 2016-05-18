@@ -6,10 +6,14 @@ module.exports = function(app, passport) {
 
 
 // User routes
-	app.post('/login', passport.authenticate('local-login', {
-        successRedirect: '/profile',
-        failureRedirect: '/login'
+	app.post('/register', passport.authenticate('local-register', {
+        successRedirect: '/success',
+        failureRedirect: '/register'
     }))
+
+    app.get('/success', function(req, res){
+    	res.json(req.session.passport)
+    })
 
 	app.get('/users', function(req, res){
 		users.show(req, res);
@@ -42,6 +46,7 @@ module.exports = function(app, passport) {
 
 // Room routes
 	app.get('/rooms', function(req, res){
+
 		rooms.show(req, res);
 	})
 
