@@ -12,11 +12,14 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
     let prefs = NSUserDefaults.standardUserDefaults()
     var roomTasks = [NSDictionary]()
     var roomUsers = [NSDictionary]()
+    
+    @IBOutlet var taskTableView: UITableView!
+    
     override func viewDidLoad() {
         print("taskView")
         let prefs = NSUserDefaults.standardUserDefaults()
         var room = prefs.stringForKey("currentRoom")!
-
+        taskTableView.dataSource = self
         TaskModel.getTasksForRoom(room) {
             data, response, error in
             do {
@@ -29,6 +32,7 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
 //                        print(newTask)
                         self.roomTasks.append(newTask)
                     }
+                    print (self.roomTasks)
                     let users = room["users"] as! NSArray
                     for user in users {
                         let newUser = user as! NSDictionary
@@ -60,7 +64,14 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
             controller.backButtonDelegate = self
         }
     }
-
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return roomTasks.count
+    }
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = taskTableView.dequeueReusableCellWithIdentifier("TaskCell")
+        cell?.textLabel?.text = roomTasks[indexPath.row]["objective"] as! String
+        return cell!
+    }
     
     func backButtonPressedFrom(controller: UITableViewController){
         dismissViewControllerAnimated(true, completion: nil)
