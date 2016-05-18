@@ -37,7 +37,6 @@ class RoomSelectionViewController: UITableViewController {
     
     override func viewDidLoad() {
         print("you are at select room page")
-        print(prefs.valueForKey("currentUser")!)
         super.viewDidLoad()
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -78,7 +77,12 @@ class RoomSelectionViewController: UITableViewController {
             room = rooms[indexPath.row]
         }
         prefs.setValue(room["_id"], forKey: "currentRoom")
-        
+        let roomId = prefs.valueForKey("currentRoom")! as! String
+        let user = prefs.valueForKey("currentUser")! as! String
+        let roomData = NSMutableDictionary()
+        roomData["_id"] = roomId
+        roomData["user"] = user
+        addToRoom(roomData)
     }
     
     
@@ -95,12 +99,10 @@ class RoomSelectionViewController: UITableViewController {
             do{
                 if(data != nil){
                     if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSMutableArray {
-                        print(jsonResult)
                         for i in jsonResult {
                             let newRoom = i as! NSMutableDictionary
                             self.rooms.append(newRoom)
                         }
-                        print(self.rooms)
                         dispatch_async(dispatch_get_main_queue(), {
                             self.tableView.reloadData()
                         })
@@ -113,7 +115,23 @@ class RoomSelectionViewController: UITableViewController {
         }
     }
     
-//    func addToRoom(withRoomName: String, )
+    func addToRoom(roomData: NSMutableDictionary){
+        RoomModel.selectRoom(roomData){
+            data, response, error in
+            do{
+                if(data != nil){
+                    if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSMutableArray {
+                        print(jsonResult)
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.tableView.reloadData()
+                        })
+                    }
+                }
+            } catch {
+                print("Something went wrong")
+            }
+        }
+    }
     
 }
 
