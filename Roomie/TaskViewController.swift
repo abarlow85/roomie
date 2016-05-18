@@ -11,6 +11,7 @@ import UIKit
 class TaskViewController: UITableViewController, BackButtonDelegate {
     let prefs = NSUserDefaults.standardUserDefaults()
     var roomTasks = [NSDictionary]()
+    var roomUsers = [NSDictionary]()
     override func viewDidLoad() {
 
         let prefs = NSUserDefaults.standardUserDefaults()
@@ -28,6 +29,11 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
 //                        print(newTask)
                         self.roomTasks.append(newTask)
                     }
+                    let users = room["users"] as! NSArray
+                    for user in users {
+                        let newUser = user as! NSDictionary
+                        self.roomUsers.append(newUser)
+                    }
                     dispatch_async(dispatch_get_main_queue(), {
                         self.tableView.reloadData()
                     })
@@ -40,6 +46,7 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print(roomUsers)
         if segue.identifier == "taskSegue" {
             let navigationController = segue.destinationViewController as! UINavigationController
             let controller = navigationController.topViewController as! MessageViewController
@@ -48,6 +55,8 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
         if segue.identifier == "newTaskSegue" {
             let navigationController = segue.destinationViewController as! UINavigationController
             let controller = navigationController.topViewController as! newTaskViewController
+            controller.userArray = roomUsers
+//            print(roomUsers)
             controller.backButtonDelegate = self
         }
     }

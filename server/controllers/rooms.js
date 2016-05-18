@@ -19,12 +19,15 @@ module.exports = (function(){
 		show_by_id: function(req, res) {
 			Room.findOne({_id: req.params.id})
 			.populate("tasks")
+			.populate("users")
 			.exec(function(err, room) {
 				if(err){
 					console.log('cannot search for room');
 				} else {
 					console.log('showing room search');
+					console.log(room)
 					res.json(room);
+
 				}
 			})
 		},
@@ -137,6 +140,5 @@ module.exports = (function(){
 		// 		}
 		// 	})
 		// }
-		
 	}
 })();

@@ -246,7 +246,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ALa-gC-Qbj">
                             <connections>
-                                <segue destination="SOh-z7-NS8" kind="presentation" id="Q1K-Hp-sKh"/>
+                                <segue destination="SOh-z7-NS8" kind="presentation" identifier="newTaskSegue" id="Q1K-Hp-sKh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -287,28 +287,6 @@
                                     <!--2016-05-18 20:18:09 +0000-->
                                 </date>
                             </datePicker>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vyz-Vo-iaA">
-                                <rect key="frame" x="21" y="237" width="560" height="317"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="317" id="zRU-Ch-s3q"/>
-                                </constraints>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userChoiceCell" id="pDn-52-zDf">
-                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pDn-52-zDf" id="8gM-s8-qsJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jef-K3-E8D">
-                                                    <rect key="frame" x="494" y="6" width="51" height="31"/>
-                                                </switch>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qyz-Yl-SLo">
                                 <rect key="frame" x="532" y="562" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
@@ -337,6 +315,23 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vyz-Vo-iaA">
+                                <rect key="frame" x="20" y="237" width="560" height="317"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="317" id="zRU-Ch-s3q"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userChoiceCell" id="pDn-52-zDf">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pDn-52-zDf" id="8gM-s8-qsJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.77254901960784317" green="0.8784313725490196" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -415,7 +410,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="newTaskDate" destination="gaI-c3-QeQ" id="lZD-yS-6xz"/>
                         <outlet property="newTaskText" destination="d3V-hV-7JV" id="xV0-21-Ooj"/>
+                        <outlet property="userTableView" destination="Vyz-Vo-iaA" id="Scu-oB-uxz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vv-NE-iqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
