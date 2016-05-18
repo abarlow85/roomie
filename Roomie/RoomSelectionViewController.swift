@@ -39,7 +39,6 @@ class RoomSelectionViewController: UITableViewController {
         print("you are at select room page")
         print(prefs.valueForKey("currentUser")!)
         super.viewDidLoad()
-        
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true

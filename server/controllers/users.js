@@ -28,11 +28,19 @@ module.exports = (function(){
 		},
 
 		add_to_room: function(req, res){
-			Room.findOneAndUpdate({_id: req.body._id}, {'$push': {users: req.body.user._id}}).exec(function(err){
+			Room.findOneAndUpdate({_id: req.body._id}, {'$push': {users: req.body.user}}).exec(function(err){
 				if(err){
 					console.log('cannot add user to room');
 				} else{
-					console.log('successfully added user to room')
+					User.findByIdandUpdate(user, {$push: {_room: req.body._id}}, {new: true}, function(err, user){
+						if (err) {
+							console.log(err)
+						} else {
+							console.log('successfully added user to room')
+							res.json(user)
+						}
+					});
+					
 				}
 			})
 		}
