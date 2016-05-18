@@ -10,7 +10,7 @@ import UIKit
 
 class RoomSelectionViewController: UITableViewController {
     
-    @IBOutlet weak var roomSearchTextField: UITextField!
+    @IBOutlet weak var RoomSearchBar: UISearchBar!
 
     
     let prefs = NSUserDefaults.standardUserDefaults()
