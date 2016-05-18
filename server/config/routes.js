@@ -66,6 +66,8 @@ module.exports = function(app, passport) {
 	})
 
 	app.get('/rooms/:id', function(req, res){
+		console.log("getting tasks for room")
+		console.log(req.params.id)
 		rooms.show_by_id(req, res);
 	})
 

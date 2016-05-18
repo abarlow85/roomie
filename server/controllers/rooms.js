@@ -17,7 +17,9 @@ module.exports = (function(){
 		},
 
 		show_by_id: function(req, res) {
-			Room.findOne({name: req.body.name}).exec(function(err, room) {
+			Room.findOne({_id: req.params.id})
+			.populate("tasks")
+			.exec(function(err, room) {
 				if(err){
 					console.log('cannot search for room');
 				} else {

@@ -36,7 +36,6 @@ class RoomModel {
         
     }
 
-    
     static func createRoom(roomData: NSMutableDictionary, completionHandler: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void ) {
         
         if let url = NSURL(string: "http://localhost:8000/rooms/create") {
