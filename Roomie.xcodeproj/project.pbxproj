@@ -21,6 +21,7 @@
 		70EC0F6B1CEB988200B7BAB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70EC0F691CEB988200B7BAB8 /* LaunchScreen.storyboard */; };
 		70EC0F761CEB988200B7BAB8 /* RoomieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EC0F751CEB988200B7BAB8 /* RoomieTests.swift */; };
 		70EC0F811CEB988200B7BAB8 /* RoomieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EC0F801CEB988200B7BAB8 /* RoomieUITests.swift */; };
+		A62146D61CEC225E00EAB641 /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62146D51CEC225E00EAB641 /* RoomModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		70EC0F7C1CEB988200B7BAB8 /* RoomieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoomieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70EC0F801CEB988200B7BAB8 /* RoomieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomieUITests.swift; sourceTree = "<group>"; };
 		70EC0F821CEB988200B7BAB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A62146D51CEC225E00EAB641 /* RoomModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				70EC0F621CEB988100B7BAB8 /* TaskViewController.swift */,
 				70CD069C1CEBBD9700D42611 /* RegisterViewController.swift */,
 				70CD06A21CEBF11900D42611 /* RoomSelectionViewController.swift */,
+				A62146D51CEC225E00EAB641 /* RoomModel.swift */,
 				70CD069E1CEBCA0E00D42611 /* UserModel.swift */,
 				70EC0F641CEB988100B7BAB8 /* Main.storyboard */,
 				70EC0F671CEB988200B7BAB8 /* Assets.xcassets */,
@@ -280,6 +283,7 @@
 			files = (
 				70CD06A31CEBF11900D42611 /* RoomSelectionViewController.swift in Sources */,
 				59105D1D1CEBD42500DDDFD5 /* LoginViewController.swift in Sources */,
+				A62146D61CEC225E00EAB641 /* RoomModel.swift in Sources */,
 				59105D1F1CEBDE3300DDDFD5 /* TaskModel.swift in Sources */,
 				70CD069D1CEBBD9700D42611 /* RegisterViewController.swift in Sources */,
 				70EC0F631CEB988100B7BAB8 /* TaskViewController.swift in Sources */,

@@ -11,7 +11,7 @@ module.exports = (function(){
 					console.log('cannot show all rooms');
 				} else{
 					console.log('showing all rooms');
-					res.json(users);
+					res.json(rooms);
 				}
 			})
 		},

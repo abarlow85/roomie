@@ -19,14 +19,14 @@ module.exports = function(app, passport) {
     }));
 
     app.get('/success', function(req, res){
-    	res.json(req.session.passport)
+    	res.json(req.session.passport);
     });
 
     app.get('/failure', function(req, res){
     	
     	var error = req.flash('error')[0];
     	console.log(error);
-    	res.json({'error': error})
+    	res.json({'error': error});
     });
 
 	app.get('/users', function(req, res){

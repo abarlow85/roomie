@@ -10,9 +10,37 @@ import UIKit
 
 class RoomSelectionViewController: UITableViewController {
     
-    override func viewDidLoad() {
+    @IBOutlet weak var roomSearchTextField: UITextField!
+
     
-        print("room selection view")
+    let prefs = NSUserDefaults.standardUserDefaults()
+    var rooms = NSMutableDictionary()
+    
+    override func viewDidLoad() {
+        print("got to room page")
+        print(prefs.valueForKey("currentUser")!)
+        super.viewDidLoad()
+    }
+
+    func showAllRooms(){
+        RoomModel.getRooms(){
+            data, response, error in
+            do{
+                if(data != nil){
+                    if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSMutableDictionary {
+                        print(jsonResult)
+                        self.rooms = jsonResult
+                        print(self.rooms)
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.tableView.reloadData()
+                        })
+                    }
+                }
+                
+            } catch {
+                print("Something went wrong")
+            }
+        }
     }
     
     
