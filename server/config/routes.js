@@ -20,6 +20,7 @@ module.exports = function(app, passport) {
 
     app.get('/success', function(req, res){
     	res.json(req.session.passport);
+    	// rooms.create(req, res);
     });
 
     app.get('/failure', function(req, res){
@@ -60,7 +61,7 @@ module.exports = function(app, passport) {
 
 // Room routes
 	app.get('/rooms', function(req, res){
-
+		console.log("getting rooms")
 		rooms.show(req, res);
 	})
 

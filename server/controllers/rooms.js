@@ -54,5 +54,87 @@ module.exports = (function(){
 				}
 			})
 		}
+
+		// create: function(req, res){
+		// 	console.log("adding rooms");
+		// 	var room = new Room({name: "123", category: "UC Berkeley", created_at: new Date});
+		// 	room.save(function(err, room){
+		// 		if(err){
+		// 			console.log(err.errors);
+		// 			console.log('cannot add room');
+		// 		} else{
+		// 			console.log("successfully added room")
+					
+		// 		}
+		// 	})
+		// 	var room = new Room({name: "321", category: "UC Berkeley", created_at: new Date});
+		// 	room.save(function(err, room){
+		// 		if(err){
+		// 			console.log(err.errors);
+		// 			console.log('cannot add room');
+		// 		} else{
+		// 			console.log("successfully added room")
+					
+		// 		}
+		// 	})
+		// 	var room = new Room({name: "541", category: "UC Berkeley", created_at: new Date});
+		// 	room.save(function(err, room){
+		// 		if(err){
+		// 			console.log(err.errors);
+		// 			console.log('cannot add room');
+		// 		} else{
+		// 			console.log("successfully added room")
+					
+		// 		}
+		// 	})
+		// 	var room = new Room({name: "7363", category: "UC Berkeley", created_at: new Date});
+		// 	room.save(function(err, room){
+		// 		if(err){
+		// 			console.log(err.errors);
+		// 			console.log('cannot add room');
+		// 		} else{
+		// 			console.log("successfully added room")
+					
+		// 		}
+		// 	})
+		// 	var room = new Room({name: "1", category: "UC Davis", created_at: new Date});
+		// 	room.save(function(err, room){
+		// 		if(err){
+		// 			console.log(err.errors);
+		// 			console.log('cannot add room');
+		// 		} else{
+		// 			console.log("successfully added room")
+					
+		// 		}
+		// 	})
+		// 	var room = new Room({name: "13", category: "UC Davis", created_at: new Date});
+		// 	room.save(function(err, room){
+		// 		if(err){
+		// 			console.log(err.errors);
+		// 			console.log('cannot add room');
+		// 		} else{
+		// 			console.log("successfully added room")	
+		// 		}
+		// 	})
+		// 	var room = new Room({name: "12", category: "UC Davis", created_at: new Date});
+		// 	room.save(function(err, room){
+		// 		if(err){
+		// 			console.log(err.errors);
+		// 			console.log('cannot add room');
+		// 		} else{
+		// 			console.log("successfully added room")	
+		// 		}
+		// 	})
+		// 	var room = new Room({name: "1", category: "Coding Dojo", created_at: new Date});
+		// 	room.save(function(err, room){
+		// 		if(err){
+		// 			console.log(err.errors);
+		// 			console.log('cannot add room');
+		// 		} else{
+		// 			console.log("successfully added room")	
+		// 		}
+		// 	})
+		// }
+		
 	}
 })();

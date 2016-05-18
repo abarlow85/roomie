@@ -22,6 +22,7 @@
 		70EC0F761CEB988200B7BAB8 /* RoomieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EC0F751CEB988200B7BAB8 /* RoomieTests.swift */; };
 		70EC0F811CEB988200B7BAB8 /* RoomieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EC0F801CEB988200B7BAB8 /* RoomieUITests.swift */; };
 		A62146D61CEC225E00EAB641 /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62146D51CEC225E00EAB641 /* RoomModel.swift */; };
+		A62146D81CECBE9400EAB641 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62146D71CECBE9400EAB641 /* Room.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		70EC0F801CEB988200B7BAB8 /* RoomieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomieUITests.swift; sourceTree = "<group>"; };
 		70EC0F821CEB988200B7BAB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A62146D51CEC225E00EAB641 /* RoomModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
+		A62146D71CECBE9400EAB641 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				70CD069C1CEBBD9700D42611 /* RegisterViewController.swift */,
 				70CD06A21CEBF11900D42611 /* RoomSelectionViewController.swift */,
 				A62146D51CEC225E00EAB641 /* RoomModel.swift */,
+				A62146D71CECBE9400EAB641 /* Room.swift */,
 				70CD069E1CEBCA0E00D42611 /* UserModel.swift */,
 				70EC0F641CEB988100B7BAB8 /* Main.storyboard */,
 				70EC0F671CEB988200B7BAB8 /* Assets.xcassets */,
@@ -291,6 +294,7 @@
 				59105D211CEBDE4000DDDFD5 /* BackButtonDelegate.swift in Sources */,
 				70EC0F611CEB988100B7BAB8 /* AppDelegate.swift in Sources */,
 				59105D1B1CEBD02E00DDDFD5 /* MessageViewController.swift in Sources */,
+				A62146D81CECBE9400EAB641 /* Room.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
