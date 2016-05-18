@@ -11,6 +11,8 @@ import UIKit
 class TaskViewController: UITableViewController, BackButtonDelegate {
 
     override func viewDidLoad() {
+        let prefs = NSUserDefaults.standardUserDefaults()
+        print(prefs.valueForKey("currentRoom"))
         TaskModel.getTasksForRoom() {
             data, response, error in
             do {
