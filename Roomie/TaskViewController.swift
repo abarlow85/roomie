@@ -68,8 +68,14 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
         return roomTasks.count
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = taskTableView.dequeueReusableCellWithIdentifier("TaskCell")
+        var cell = taskTableView.dequeueReusableCellWithIdentifier("TaskCell")
+        if (cell != nil)
+        {
+            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle,
+                                   reuseIdentifier: "TaskCell")
+        }
         cell?.textLabel?.text = roomTasks[indexPath.row]["objective"] as! String
+        cell?.detailTextLabel?.text = roomTasks[indexPath.row ]["expiration_date"] as! String
         return cell!
     }
     
