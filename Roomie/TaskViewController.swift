@@ -11,7 +11,7 @@ import UIKit
 class TaskViewController: UITableViewController, BackButtonDelegate {
     let prefs = NSUserDefaults.standardUserDefaults()
     let dateFormatter = NSDateFormatter()
-    var roomTasks = [NSDictionary]()
+    var roomTasks = [NSMutableDictionary]()
     var roomUsers = [NSDictionary]()
     
     
@@ -32,7 +32,7 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
                     let tasks = room["tasks"] as! NSArray
                     for task in tasks{
                         var newTask = task as! NSMutableDictionary
-                        self.update(&newTask)
+//                        self.update(&newTask)
 //                        print(newTask)
                         self.roomTasks.append(newTask)
                     }
@@ -43,6 +43,8 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
                     }
                     dispatch_async(dispatch_get_main_queue(), {
                         self.tableView.reloadData()
+                        self.update()
+                        print(self.roomTasks)
                     })
                 }
             } catch {
@@ -51,7 +53,8 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
         }
 //        tableView.backgroundColor = UIColor.redColor()
         super.viewDidLoad()
-        var _ = NSTimer(timeInterval: 1.0, target: self, selector: #selector(UITableViewController.viewDidLoad), userInfo: nil, repeats: true)
+        
+        
         
     }
     
@@ -89,9 +92,25 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
             cell?.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
         }
         
-        cell?.textLabel?.text = roomTasks[indexPath.row]["objective"] as! String
+        let objective = roomTasks[indexPath.row]["objective"] as! String
+        var userString = ""
+        let users = roomTasks[indexPath.row]["users"] as! NSArray
+        for idx in 0..<users.count {
+            let user = users[idx]["name"] as! String
+            if users.count < 2 {
+                userString += user
+            } else if idx < users.count - 2 {
+                userString += "\(user), "
+            } else if idx == users.count - 2 {
+                userString += "\(user) and "
+            } else {
+                userString += "\(user)"
+            }
+            
+        }
+        cell?.textLabel?.text = "\(objective)"
         let timeLeft = String(roomTasks[indexPath.row ]["timeLeft"]!)
-        cell?.detailTextLabel?.text = timeLeft
+        cell?.detailTextLabel?.text = "\(timeLeft): \(userString)"
         return cell!
     }
     
@@ -121,38 +140,42 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
     }
     
     
-    func update(inout newTask: NSMutableDictionary) {
+    func update() {
         let now = NSDate()
-        let dueDateString = newTask["expiration_date"] as! String
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let dueDate = self.dateFormatter.dateFromString(dueDateString)!
-        var timeLeft = Int(dueDate.timeIntervalSinceDate(now))
-        let days = timeLeft / (60*60*24)
-        timeLeft -= (days*60*60*24)
-        let hours = timeLeft / (60*60)
-        timeLeft -= (hours*60*60)
-        let minutes = timeLeft / (60)
-        timeLeft -= (minutes*60)
-        print("days: \(days)")
-        print("hours: \(hours)")
-        print("minutes: \(minutes)")
-        var timeLeftString = ""
-        if days > 0 {
-            timeLeftString += "\(days) days "
+        for newTask in roomTasks {
+            let dueDateString = newTask["expiration_date"] as! String
+            let dueDate = self.dateFormatter.dateFromString(dueDateString)!
+            var timeLeft = Int(dueDate.timeIntervalSinceDate(now))
+            let days = timeLeft / (60*60*24)
+            timeLeft -= (days*60*60*24)
+            let hours = timeLeft / (60*60)
+            timeLeft -= (hours*60*60)
+            let minutes = timeLeft / (60)
+            timeLeft -= (minutes*60)
+            print("days: \(days)")
+            print("hours: \(hours)")
+            print("minutes: \(minutes)")
+            var timeLeftString = ""
+            if days > 0 {
+                timeLeftString += "\(days)d "
+            }
+            if hours > 0 {
+                timeLeftString += "\(hours)h "
+            }
+            if minutes >= 0 {
+                timeLeftString += "\(minutes)m "
+            }
+            if timeLeft <= 0 {
+                timeLeftString = "Task not completed"
+            } else {
+                timeLeftString += "left"
+            }
+            
+            newTask["timeLeft"] = timeLeftString
+            
         }
-        if hours > 0 {
-            timeLeftString += "\(hours) hours "
-        }
-        if minutes >= 0 {
-            timeLeftString += "\(minutes) minutes "
-        }
-        if timeLeft <= 0 {
-            timeLeftString = "Task not completed"
-        } else {
-            timeLeftString += "left"
-        }
-        
-        newTask["timeLeft"] = timeLeftString
+        taskTableView.reloadData()
         
 //        print(timeLeft)
     }
@@ -162,10 +185,10 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
     }
     
     func backButtonPressedFrom(controller: UITableViewController){
-        dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: self.update)
     }
     func back2ButtonPressedFrom(controller: UIViewController){
-        dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: self.update)
     }
     
 

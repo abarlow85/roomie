@@ -254,7 +254,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axP-9l-MFl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1513" y="1872"/>
+            <point key="canvasLocation" x="1537" y="1857"/>
         </scene>
         <!--New Task-->
         <scene sceneID="o7K-oN-8Gl">
@@ -419,7 +419,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vv-NE-iqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="373" y="2898"/>
+            <point key="canvasLocation" x="473" y="2718"/>
         </scene>
         <!--New Comment-->
         <scene sceneID="1Hv-aR-3P8">
@@ -433,7 +433,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kpi-PF-VTp">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kpi-PF-VTp">
                                 <rect key="frame" x="20" y="101" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="18O-By-ow7"/>
@@ -441,13 +441,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insert Comment:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5l-KP-OS4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Insert Comment:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5l-KP-OS4">
                                 <rect key="frame" x="20" y="72" width="128" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ga-XY-Kjf">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ga-XY-Kjf">
                                 <rect key="frame" x="531" y="139" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
@@ -593,7 +593,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7kh-Td-x4V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2252" y="2391"/>
+            <point key="canvasLocation" x="3802" y="2665"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jk8-AW-F2e">
@@ -683,7 +683,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yP-QV-FNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="347" y="1833"/>
+            <point key="canvasLocation" x="699" y="1857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vRW-Vi-Cyy">
@@ -719,7 +719,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qg5-6A-RCJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1541" y="2898"/>
+            <point key="canvasLocation" x="1513" y="2718"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qiV-q1-KmW">
@@ -775,7 +775,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PPm-aN-iiR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3757" y="2599"/>
+            <point key="canvasLocation" x="3035" y="2665"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6Nm-LC-0ZQ">

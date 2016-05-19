@@ -18,8 +18,8 @@ module.exports = (function(){
 
 		show_by_id: function(req, res) {
 			Room.findOne({_id: req.params.id})
-			.populate("tasks")
 			.populate("users")
+			.populate({path: 'tasks', model: 'Task', populate: {path: 'users', model: 'User'}})
 			.exec(function(err, room) {
 				if(err){
 					console.log('cannot search for room');
