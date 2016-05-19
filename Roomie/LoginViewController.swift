@@ -65,6 +65,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     } else {
                         let user = jsonResult["user"] as! String
                         self.prefs.setValue(user, forKey: "currentUser")
+                        
                         dispatch_async(dispatch_get_main_queue(), {
                             self.performSegueWithIdentifier("LoginSegue", sender: jsonResult)
                         })

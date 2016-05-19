@@ -85,7 +85,7 @@ class newTaskViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
-        
+    
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
