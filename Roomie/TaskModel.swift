@@ -10,13 +10,13 @@ import Foundation
 class TaskModel {
     static func getSingleTask (task:String, completionHandler: (data:NSData?, response: NSURLResponse?, error: NSError?) -> Void) {
         print(task)
-        let url = NSURL(string: "http://localhost:8000/tasks/" + task)
+        let url = NSURL(string: "http://52.27.27.251/tasks/" + task)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: completionHandler)
         task.resume()
     }
     static func getTasksForRoom(room:String, completionHandler: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void){
-        let url = NSURL(string: "http://localhost:8000/rooms/" + room)
+        let url = NSURL(string: "http://52.27.27.251/rooms/" + room)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: completionHandler)
         task.resume()
@@ -26,7 +26,7 @@ class TaskModel {
             let jsonData = try NSJSONSerialization.dataWithJSONObject(taskData, options: NSJSONWritingOptions.PrettyPrinted)
             let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
             print(jsonString)
-            if let url = NSURL(string: "http://localhost:8000/tasks/create") {
+            if let url = NSURL(string: "http://52.27.27.251/tasks/create") {
                 let request = NSMutableURLRequest(URL: url)
                 request.HTTPMethod = "POST"
                 request.HTTPBody = jsonString.dataUsingEncoding(NSUTF8StringEncoding)
@@ -45,7 +45,7 @@ class TaskModel {
             let jsonData = try NSJSONSerialization.dataWithJSONObject(taskData, options: NSJSONWritingOptions.PrettyPrinted)
             let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
             print(jsonString)
-            if let url = NSURL(string: "http://localhost:8000/tasks/remove") {
+            if let url = NSURL(string: "http://52.27.27.251/tasks/remove") {
                 let request = NSMutableURLRequest(URL: url)
                 request.HTTPMethod = "POST"
                 request.HTTPBody = jsonString.dataUsingEncoding(NSUTF8StringEncoding)
@@ -64,7 +64,7 @@ class TaskModel {
             let jsonData = try NSJSONSerialization.dataWithJSONObject(taskData, options: NSJSONWritingOptions.PrettyPrinted)
             let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
             print(jsonString)
-            if let url = NSURL(string: "http://localhost:8000/tasks/complete") {
+            if let url = NSURL(string: "http://52.27.27.251/tasks/complete") {
                 let request = NSMutableURLRequest(URL: url)
                 request.HTTPMethod = "POST"
                 request.HTTPBody = jsonString.dataUsingEncoding(NSUTF8StringEncoding)
