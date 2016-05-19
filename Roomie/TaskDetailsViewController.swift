@@ -61,6 +61,7 @@ class TaskDetailsViewController: UIViewController, UITableViewDataSource, UITabl
         let cell = userTableView.dequeueReusableCellWithIdentifier("taskUsersCell")!
         cell.textLabel?.text =  users[indexPath.row]["name"] as! String
         cell.selectionStyle = .None
+        cell.backgroundColor = UIColor(red:197/255.0, green:224/255.0, blue:216/255.0, alpha: 1.0)
         return cell
     }
     
