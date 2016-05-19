@@ -47,6 +47,10 @@ module.exports = function(app, passport) {
 		tasks.show(req, res);
 	});
 
+	app.get('/tasks/:id', function(req, res){
+        tasks.show_by_id(req, res);
+    })
+    
 	app.post('/tasks/create', function(req, res){
 		console.log("creating task");
 		// console.log(req.body);

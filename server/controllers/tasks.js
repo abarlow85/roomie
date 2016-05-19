@@ -14,7 +14,18 @@ module.exports = (function(){
 				}
 			})
 		},
-
+		show_by_id: function(req, res) {
+			Task.findOne({_id: req.params.id})
+				.populate("users")
+				.populate("messages")
+				.exec(function(err, task) {
+					if(err){
+						console.log('cannot show all tasks');
+					} else{
+						res.json(task);
+					}
+			})
+		},
 		create: function(req, res) {
 			var task = new Task({objective: req.body.objective, expiration_date: req.body.expiration_date, _room: req.body._room, users: req.body.users});
 			task.save(function(err, task){

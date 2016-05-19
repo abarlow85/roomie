@@ -8,6 +8,13 @@
 
 import Foundation
 class TaskModel {
+    static func getSingleTask (task:String, completionHandler: (data:NSData?, response: NSURLResponse?, error: NSError?) -> Void) {
+        print(task)
+        let url = NSURL(string: "http://localhost:8000/tasks/" + task)
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url!, completionHandler: completionHandler)
+        task.resume()
+    }
     static func getTasksForRoom(room:String, completionHandler: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void){
         let url = NSURL(string: "http://localhost:8000/rooms/" + room)
         let session = NSURLSession.sharedSession()

@@ -8,55 +8,60 @@
 
 import UIKit
 
-class TaskDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BackButtonDelegate {
+class TaskDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var userTableView: UITableView!
     weak var backButtonDelegate: BackButtonDelegate?
-    var taskdetails: NSDictionary?
-    var users: [NSDictionary]?
+    var taskdetails: String?
+    var users = [NSDictionary]()
     
+    @IBAction func backButtonPressed(sender: UIBarButtonItem) {
+        backButtonDelegate?.back2ButtonPressedFrom(self)
+    }
+
+    @IBOutlet weak var taskLabel: UILabel!
+    @IBOutlet weak var dueDateLabel: UILabel!
     
     override func viewDidLoad() {
         userTableView.dataSource = self
         userTableView.delegate = self
-        let users = taskdetails!["users"] as! NSArray
-        for user in users {
-            let newUser = user as! NSDictionary
+        TaskModel.getSingleTask(taskdetails!) {
+            data, response, error in
+            do{
+                if let task = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSMutableDictionary {
+                    let taskDescription = task["objective"] as! String
+                    let taskDue = task["expiration_date"] as! String
+                    let newUsers = task["users"] as! NSArray
+                    for user in newUsers {
+                        print(user)
+                        let newUser = user as! NSDictionary
+                        self.users.append(newUser)
+                    }
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.taskLabel.text = taskDescription
+                        self.dueDateLabel.text = "Due Date: \(taskDue)"
+                        self.userTableView.reloadData()
+                    })
+
+                }
+                
+            }catch {
+                print("Error")
+            }
         }
-        
+
         super.viewDidLoad()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskdetails!.count
+        return users.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = userTableView.dequeueReusableCellWithIdentifier("userChoiceCell")!
-        cell.textLabel?.text =  taskdetails![indexPath.row]!["name"] as! String
+        let cell = userTableView.dequeueReusableCellWithIdentifier("taskUsersCell")!
+        cell.textLabel?.text =  users[indexPath.row]["name"] as! String
         cell.selectionStyle = .None
         return cell
     }
     
-    func backButtonPressedFrom(controller: UITableViewController){
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    func back2ButtonPressedFrom(controller: UIViewController){
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        userTableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.Checkmark
-//        let userId = userArray![indexPath.row]["_id"] as! String
-//        responsibleUsers.append(userId)
-//    }
-//    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-//        userTableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.None
-//        let userId = userArray![indexPath.row]["_id"] as! String
-//        let userIndex = responsibleUsers.indexOf(userId)
-//        responsibleUsers.removeAtIndex(userIndex!)
-//    }
-    
-    
-    
-    
+
 }

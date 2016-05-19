@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rra-nX-6fi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rra-nX-6fi">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -228,9 +228,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="533" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="ubW-cF-Meb" kind="presentation" identifier="taskSegue" trigger="accessoryAction" id="zzB-2i-JC1"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -252,6 +249,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="taskTableView" destination="jKm-fT-tKd" id="mk5-1z-dzr"/>
+                        <segue destination="ZhE-y3-Kjv" kind="presentation" identifier="taskSegue" id="eG5-8w-XjF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axP-9l-MFl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -476,16 +474,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Task:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LmJ-VI-nIG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LmJ-VI-nIG">
                                 <rect key="frame" x="20" y="72" width="41" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Due Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNk-AK-VgK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNk-AK-VgK">
                                 <rect key="frame" x="20" y="113" width="76" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Btp-hS-mLI">
@@ -515,8 +513,16 @@
                             <constraint firstItem="LmJ-VI-nIG" firstAttribute="top" secondItem="eOV-tF-c03" secondAttribute="bottom" constant="8" id="mnN-8C-y0X"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Task Details" id="4ja-oq-mlV"/>
+                    <navigationItem key="navigationItem" title="Task Details" id="4ja-oq-mlV">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="b9D-Go-JS8">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="ubW-cF-Meb" id="V3z-WG-JPY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="dueDateLabel" destination="NNk-AK-VgK" id="K8x-yB-EkF"/>
+                        <outlet property="taskLabel" destination="LmJ-VI-nIG" id="Hx9-Vw-qT8"/>
                         <outlet property="userTableView" destination="Btp-hS-mLI" id="chc-Vm-Gyq"/>
                     </connections>
                 </viewController>
@@ -660,19 +666,19 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Lrs-Av-JIe" kind="relationship" relationship="viewControllers" id="FMX-Rd-53s"/>
-                        <segue destination="7nY-yM-yjA" kind="relationship" relationship="viewControllers" id="kkt-6K-krT"/>
+                        <segue destination="7nY-yM-yjA" kind="relationship" relationship="viewControllers" id="L7m-vU-AS7"/>
+                        <segue destination="Lrs-Av-JIe" kind="relationship" relationship="viewControllers" id="bD6-2m-Bie"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVA-Jv-g9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2937" y="1881"/>
         </scene>
-        <!--Item-->
+        <!--Messages-->
         <scene sceneID="8SA-by-gH6">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lrs-Av-JIe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="KdQ-4R-df9"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lrs-Av-JIe" userLabel="Messages" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Messages" id="KdQ-4R-df9" userLabel="Messages"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4X9-Pe-O1l">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -687,11 +693,11 @@
             </objects>
             <point key="canvasLocation" x="3749" y="1881"/>
         </scene>
-        <!--Item-->
+        <!--Task Details-->
         <scene sceneID="dma-q7-yIO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7nY-yM-yjA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="1q5-0e-v0x"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7nY-yM-yjA" userLabel="Task Details" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Task Details" id="1q5-0e-v0x" userLabel="Task Details"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="622-GR-G8c">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -708,8 +714,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cec-kJ-sXF"/>
-        <segue reference="zzB-2i-JC1"/>
         <segue reference="LWo-Mr-TlG"/>
+        <segue reference="uMT-CT-Pnh"/>
     </inferredMetricsTieBreakers>
 </document>
