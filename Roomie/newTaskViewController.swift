@@ -14,6 +14,7 @@ class newTaskViewController: UIViewController, UITableViewDataSource, UITableVie
     let dateFormatter = NSDateFormatter()
     var userArray: NSArray?
     var responsibleUsers = [String]()
+    @IBOutlet weak var errorLabelText: UILabel!
 
     @IBOutlet weak var newTaskText: UITextField!
     @IBOutlet weak var newTaskDate: UIDatePicker!
@@ -25,10 +26,22 @@ class newTaskViewController: UIViewController, UITableViewDataSource, UITableVie
         print("Back")
     }
     @IBAction func newTaskSubmitted(sender: UIButton) {
+        
+        if newTaskText.text!.isEmpty {
+            errorLabelText.text = "Task field is blank"
+            return
+        }
+        if newTaskDate.date.timeIntervalSinceDate(NSDate()) <= 0 {
+            errorLabelText.text = "Due date cannot be in the past"
+            return
+        }
+        if responsibleUsers.count == 0 {
+            errorLabelText.text = "No roomie was selected"
+            return
+        }
+        
         var taskData = NSMutableDictionary()
         
-        print(newTaskText.text)
-        print(newTaskDate.date)
         
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let fromDate = dateFormatter.stringFromDate(newTaskDate.date)
@@ -37,7 +50,6 @@ class newTaskViewController: UIViewController, UITableViewDataSource, UITableVie
         taskData["expiration_date"] = fromDate
         taskData["users"] = responsibleUsers
         taskData["_room"] = prefs.stringForKey("currentRoom")!
-        print (taskData)
         TaskModel.addTask(taskData) {
             data, response, error in
             do {
