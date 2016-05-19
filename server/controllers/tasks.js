@@ -61,6 +61,17 @@ module.exports = (function(){
 			})
 		},
 
+		complete: function(req, res) {
+			Task.findOneAndUpdate({_id: req.body._id}, {completed: "completed"}, function(err, tasks) {
+				if(err){
+					console.log('cannot complete task');
+				} else {
+					console.log('successfully completed task');
+					res.json(tasks);
+				}
+			})
+		},
+
 		remove: function(req, res) {
 			console.log(req.body);
 			Task.remove({_id: req.body._id}, function(err, tasks) {
