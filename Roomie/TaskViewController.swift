@@ -197,7 +197,6 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
         }
         
         share.backgroundColor = UIColor.blueColor()
-        self.update()
         return [delete, share]
     }
     
