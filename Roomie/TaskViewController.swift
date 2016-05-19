@@ -10,10 +10,13 @@ import UIKit
 
 class TaskViewController: UITableViewController, BackButtonDelegate {
     let prefs = NSUserDefaults.standardUserDefaults()
+    let dateFormatter = NSDateFormatter()
     var roomTasks = [NSDictionary]()
     var roomUsers = [NSDictionary]()
     
+    
     @IBOutlet var taskTableView: UITableView!
+
     
     override func viewDidLoad() {
         print("taskView")
@@ -28,11 +31,11 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
 //                    print(room)
                     let tasks = room["tasks"] as! NSArray
                     for task in tasks{
-                        let newTask = task as! NSDictionary
+                        var newTask = task as! NSMutableDictionary
+                        self.update(&newTask)
 //                        print(newTask)
                         self.roomTasks.append(newTask)
                     }
-                    print (self.roomTasks)
                     let users = room["users"] as! NSArray
                     for user in users {
                         let newUser = user as! NSDictionary
@@ -47,6 +50,8 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
             }
         }
         super.viewDidLoad()
+        var _ = NSTimer(timeInterval: 1.0, target: self, selector: #selector(UITableViewController.viewDidLoad), userInfo: nil, repeats: true)
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -82,9 +87,50 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
                                    reuseIdentifier: "TaskCell")
             cell?.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
         }
+        
         cell?.textLabel?.text = roomTasks[indexPath.row]["objective"] as! String
-        cell?.detailTextLabel?.text = roomTasks[indexPath.row ]["expiration_date"] as! String
+        let timeLeft = String(roomTasks[indexPath.row ]["timeLeft"]!)
+        cell?.detailTextLabel?.text = timeLeft
         return cell!
+    }
+    
+    func update(inout newTask: NSMutableDictionary) {
+        let now = NSDate()
+        let dueDateString = newTask["expiration_date"] as! String
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dueDate = self.dateFormatter.dateFromString(dueDateString)!
+        var timeLeft = Int(dueDate.timeIntervalSinceDate(now))
+        let days = timeLeft / (60*60*24)
+        timeLeft -= (days*60*60*24)
+        let hours = timeLeft / (60*60)
+        timeLeft -= (hours*60*60)
+        let minutes = timeLeft / (60)
+        timeLeft -= (minutes*60)
+        print("days: \(days)")
+        print("hours: \(hours)")
+        print("minutes: \(minutes)")
+        var timeLeftString = ""
+        if days > 0 {
+            timeLeftString += "\(days) days "
+        }
+        if hours > 0 {
+            timeLeftString += "\(hours) hours "
+        }
+        if minutes >= 0 {
+            timeLeftString += "\(minutes) minutes "
+        }
+        if timeLeft <= 0 {
+            timeLeftString = "Task not completed"
+        } else {
+            timeLeftString += "left"
+        }
+        
+        newTask["timeLeft"] = timeLeftString
+        
+//        print(timeLeft)
+        
+        
+        
     }
     
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
