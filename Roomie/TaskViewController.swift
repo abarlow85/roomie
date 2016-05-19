@@ -53,8 +53,11 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
         print(roomUsers)
         if segue.identifier == "taskSegue" {
             let navigationController = segue.destinationViewController as! UINavigationController
-            let controller = navigationController.topViewController as! MessageViewController
+            let controller = navigationController.topViewController as! TaskDetailsViewController
             controller.backButtonDelegate = self
+            if let indexPath = taskTableView.indexPathForCell(sender as! UITableViewCell) {
+                controller.taskdetails = roomTasks[indexPath]
+            }
         }
         if segue.identifier == "newTaskSegue" {
             let navigationController = segue.destinationViewController as! UINavigationController
@@ -73,10 +76,15 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
         {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle,
                                    reuseIdentifier: "TaskCell")
+            cell?.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
         }
         cell?.textLabel?.text = roomTasks[indexPath.row]["objective"] as! String
         cell?.detailTextLabel?.text = roomTasks[indexPath.row ]["expiration_date"] as! String
         return cell!
+    }
+    
+    override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("taskSegue", sender: taskTableView.cellForRowAtIndexPath(indexPath))
     }
     
     func backButtonPressedFrom(controller: UITableViewController){
