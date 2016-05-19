@@ -89,7 +89,9 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
         {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle,
                                    reuseIdentifier: "TaskCell")
+            cell!.selectionStyle = .None
             cell?.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
+            cell!.backgroundColor = UIColor(red:197/255.0, green:224/255.0, blue:216/255.0, alpha: 1.0)
         }
         
         let objective = roomTasks[indexPath.row]["objective"] as! String

@@ -9,16 +9,13 @@
 
 import UIKit
 
-class MessageViewController: UITableViewController {
-    weak var backButtonDelegate: BackButtonDelegate?
+class MessageViewController: UITableViewController, BackButtonDelegate {
+
     @IBOutlet var messageTableView: UITableView!
     var messages = [NSDictionary]()
     let prefs = NSUserDefaults.standardUserDefaults()
     var taskdetails: String?
     
-    @IBAction func backButtonPressed(sender: UIBarButtonItem) {
-        backButtonDelegate?.back2ButtonPressedFrom(self)
-    }
     override func viewDidLoad() {
         messageTableView.dataSource = self
         taskdetails =  prefs.stringForKey("currentTaskView")
@@ -45,6 +42,14 @@ class MessageViewController: UITableViewController {
         }
         super.viewDidLoad()
     }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "newMessageSegue" {
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let controller = navigationController.topViewController as! newMessageViewController
+            controller.backButtonDelegate = self
+        }
+    }
+
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
@@ -55,12 +60,21 @@ class MessageViewController: UITableViewController {
         {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle,
                                    reuseIdentifier: "TaskCell")
+            
         }
-
+        cell!.selectionStyle = .None
+        cell!.backgroundColor = UIColor(red:197/255.0, green:224/255.0, blue:216/255.0, alpha: 1.0)
         cell?.textLabel?.text = messages[indexPath.row]["content"] as! String
         cell?.detailTextLabel?.text = messages[indexPath.row ]["_user"]!["name"] as! String
         return cell!
     }
+    func back2ButtonPressedFrom(controller: UIViewController){
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    func backButtonPressedFrom(controller: UITableViewController){
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
   
     
 }
