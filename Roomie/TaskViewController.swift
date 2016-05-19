@@ -49,6 +49,7 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
                 print("Something went wrong")
             }
         }
+//        tableView.backgroundColor = UIColor.redColor()
         super.viewDidLoad()
         var _ = NSTimer(timeInterval: 1.0, target: self, selector: #selector(UITableViewController.viewDidLoad), userInfo: nil, repeats: true)
         
@@ -94,6 +95,32 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
         return cell!
     }
     
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let task = roomTasks[indexPath.row]
+            TaskModel.removeTask(task) {
+                data, response, error in
+                do {
+                    if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSMutableDictionary {
+                        print(jsonResult)
+                        self.roomTasks.removeAtIndex(indexPath.row)
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.tableView.reloadData()
+                        })
+                    }
+
+                } catch {
+                    print("Something went wrong")
+                }
+//                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            
+        }
+        // remove the mission at indexPath
+        // reload the table view
+    }
+    
+    
     func update(inout newTask: NSMutableDictionary) {
         let now = NSDate()
         let dueDateString = newTask["expiration_date"] as! String
@@ -128,9 +155,6 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
         newTask["timeLeft"] = timeLeftString
         
 //        print(timeLeft)
-        
-        
-        
     }
     
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {

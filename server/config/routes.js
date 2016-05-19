@@ -63,6 +63,7 @@ module.exports = function(app, passport) {
 	})
 
 	app.post('/tasks/remove', function(req, res){
+		console.log("getting to remove task")
 		tasks.remove(req, res);
 	})
 //Message Route

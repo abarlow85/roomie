@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Task = mongoose.model('Task');
 var User = mongoose.model('User');
 var Room = mongoose.model('Room');
+var Message = mongoose.model('Message');
 
 module.exports = (function(){
 	return{
@@ -61,30 +62,32 @@ module.exports = (function(){
 		},
 
 		remove: function(req, res) {
-			Task.remove({_id: req.params.id}, function(err, tasks) {
+			console.log(req.body);
+			Task.remove({_id: req.body._id}, function(err, tasks) {
 				if(err) {
 					console.log('cannot remove task');
 					return err.errors;
 				} else {
 					console.log('successfully removed task!');
-					res.json(true);
+					Room.findOneAndUpdate({_id: req.body._room}, {'$pull': {tasks: req.body._id}}).exec(function(err, tasks){
+						if(err){
+							console.log('cannot remove task in room');
+						} else {
+							console.log('successfully removed task in room');
+							Message.remove({_task: req.body.id}, function(err, message){
+								if(err){
+									console.log('cannot remove task in message')
+								} else {
+									console.log('successfully removed messages for task')
+									res.json(message);
+								}
+							})
+						}
+					})
 				}
 			})
-			Room.findOneAndUpdate({_id: req.body.room._id}, {'$pull': {tasks: task._id}}).exec(function(err, tasks){
-				if(err){
-					console.log('cannot update task information');
-				} else {
-					console.log('successfully updated task information');
-					res.json(tasks);
-				}
-			})
-			Message.find({_task: req.params.id}, function(err, messages){
-				if(err){
-					console.log('error')
-				} else {
-					
-				}
-			})
+			
+			
 		}
 
 
