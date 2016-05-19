@@ -18,6 +18,7 @@ class newTaskViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var newTaskText: UITextField!
     @IBOutlet weak var newTaskDate: UIDatePicker!
     @IBOutlet weak var userTableView: UITableView!
+    @IBOutlet weak var errorLabelText: UILabel!
   
 
     @IBAction func backButtonPressed(sender: UIBarButtonItem) {
@@ -25,6 +26,21 @@ class newTaskViewController: UIViewController, UITableViewDataSource, UITableVie
         print("Back")
     }
     @IBAction func newTaskSubmitted(sender: UIButton) {
+        
+        if newTaskText.text!.isEmpty {
+            errorLabelText.text = "Task field is blank"
+            return
+        }
+        if newTaskDate.date.timeIntervalSinceDate(NSDate()) <= 0 {
+            errorLabelText.text = "Due date cannot be in the past"
+            return
+        }
+        if responsibleUsers.count == 0 {
+            errorLabelText.text = "No roomie was selected"
+            return
+        }
+
+        
         var taskData = NSMutableDictionary()
         
         print(newTaskText.text)
