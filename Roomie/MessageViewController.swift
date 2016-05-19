@@ -26,7 +26,10 @@ class MessageViewController: UITableViewController {
             data, response, error in
             do{
                 if let task = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSMutableDictionary {
+                    print(task)
                     let newMessages = task["messages"] as! NSArray
+                    print ("Messages in message table: ")
+                    print (newMessages)
                     for message in newMessages {
                         print(message)
                         let newMessage = message as! NSDictionary
@@ -43,7 +46,21 @@ class MessageViewController: UITableViewController {
         super.viewDidLoad()
     }
 
-    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = messageTableView.dequeueReusableCellWithIdentifier("MessageCell")
+        if (cell != nil)
+        {
+            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle,
+                                   reuseIdentifier: "TaskCell")
+        }
+
+        cell?.textLabel?.text = messages[indexPath.row]["content"] as! String
+        cell?.detailTextLabel?.text = messages[indexPath.row ]["_user"]!["name"] as! String
+        return cell!
+    }
   
     
 }

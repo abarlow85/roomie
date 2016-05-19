@@ -1,6 +1,7 @@
 var tasks = require('../controllers/tasks.js')
 var users = require('../controllers/users.js')
 var rooms = require('../controllers/rooms.js')
+var messages = require('../controllers/messages.js')
 
 module.exports = function(app, passport) {
 
@@ -63,6 +64,10 @@ module.exports = function(app, passport) {
 
 	app.post('/tasks/remove', function(req, res){
 		tasks.remove(req, res);
+	})
+//Message Route
+	app.post('/messages/create', function (req, res){
+		messages.create(req, res);
 	})
 
 // Room routes

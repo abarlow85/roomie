@@ -421,6 +421,67 @@
             </objects>
             <point key="canvasLocation" x="373" y="2898"/>
         </scene>
+        <!--New Comment-->
+        <scene sceneID="1Hv-aR-3P8">
+            <objects>
+                <viewController id="DNh-eW-61h" customClass="newMessageViewController" customModule="Roomie" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IMF-Sy-tQa"/>
+                        <viewControllerLayoutGuide type="bottom" id="6nE-pE-WFN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mjH-1v-wqC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kpi-PF-VTp">
+                                <rect key="frame" x="20" y="101" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="18O-By-ow7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insert Comment:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5l-KP-OS4">
+                                <rect key="frame" x="20" y="72" width="128" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ga-XY-Kjf">
+                                <rect key="frame" x="531" y="139" width="49" height="30"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="DNh-eW-61h" eventType="touchUpInside" id="kLc-rB-ICb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.7725490196" green="0.87843137250000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="v5l-KP-OS4" firstAttribute="top" secondItem="IMF-Sy-tQa" secondAttribute="bottom" constant="8" id="7gk-TV-y1x"/>
+                            <constraint firstItem="4Ga-XY-Kjf" firstAttribute="trailing" secondItem="mjH-1v-wqC" secondAttribute="trailingMargin" id="8mk-aE-QLc"/>
+                            <constraint firstItem="4Ga-XY-Kjf" firstAttribute="top" secondItem="Kpi-PF-VTp" secondAttribute="bottom" constant="8" id="8nZ-db-Rs7"/>
+                            <constraint firstItem="Kpi-PF-VTp" firstAttribute="trailing" secondItem="mjH-1v-wqC" secondAttribute="trailingMargin" id="Iv2-rr-SJi"/>
+                            <constraint firstItem="Kpi-PF-VTp" firstAttribute="top" secondItem="v5l-KP-OS4" secondAttribute="bottom" constant="8" id="T8L-ae-IgQ"/>
+                            <constraint firstItem="Kpi-PF-VTp" firstAttribute="leading" secondItem="mjH-1v-wqC" secondAttribute="leadingMargin" id="aGZ-K1-C9Y"/>
+                            <constraint firstItem="v5l-KP-OS4" firstAttribute="leading" secondItem="mjH-1v-wqC" secondAttribute="leadingMargin" id="dYp-py-dlz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Comment" id="KFJ-5T-1OQ">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="RNo-o1-hNY">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="DNh-eW-61h" id="kQR-rp-cid"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="commentTextField" destination="Kpi-PF-VTp" id="knE-Lp-4Tu"/>
+                        <segue destination="EU3-EA-1Es" kind="show" identifier="MessageAddedSegue" id="41v-3G-CCO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Olt-My-YKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6069" y="1915"/>
+        </scene>
         <!--Task Comments-->
         <scene sceneID="wpE-vl-Vf3">
             <objects>
@@ -432,7 +493,7 @@
                         <color key="sectionIndexBackgroundColor" red="0.7725490196" green="0.87843137250000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" id="Gmp-tq-3hd">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gmp-tq-3hd" id="bYJ-6R-Gal">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -450,6 +511,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Back" id="uHq-gt-hnA">
                             <connections>
                                 <action selector="backButtonPressed:" destination="EU3-EA-1Es" id="Smw-bj-CAN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="n5e-6d-RQl">
+                            <connections>
+                                <segue destination="R8u-mU-LBD" kind="presentation" id="cnJ-a4-NF2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -711,9 +777,28 @@
             </objects>
             <point key="canvasLocation" x="3757" y="2599"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6Nm-LC-0ZQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R8u-mU-LBD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="boZ-Px-jN7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DNh-eW-61h" kind="relationship" relationship="rootViewController" id="GUA-Fa-Vrk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iz8-9O-mb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5257" y="1915"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uMT-CT-Pnh"/>
         <segue reference="LWo-Mr-TlG"/>
+        <segue reference="cec-kJ-sXF"/>
+        <segue reference="41v-3G-CCO"/>
     </inferredMetricsTieBreakers>
 </document>

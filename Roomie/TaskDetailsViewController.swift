@@ -34,7 +34,6 @@ class TaskDetailsViewController: UIViewController, UITableViewDataSource, UITabl
                     let taskDue = task["expiration_date"] as! String
                     let newUsers = task["users"] as! NSArray
                     for user in newUsers {
-                        print(user)
                         let newUser = user as! NSDictionary
                         self.users.append(newUser)
                     }

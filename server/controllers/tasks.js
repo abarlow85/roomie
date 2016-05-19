@@ -17,11 +17,12 @@ module.exports = (function(){
 		show_by_id: function(req, res) {
 			Task.findOne({_id: req.params.id})
 				.populate("users")
-				.populate("messages")
+				.populate({path: 'messages', model: 'Message', populate: {path: '_user', model: 'User'}})
 				.exec(function(err, task) {
 					if(err){
 						console.log('cannot show all tasks');
 					} else{
+						console.log(task)
 						res.json(task);
 					}
 			})
