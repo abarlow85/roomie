@@ -24,6 +24,7 @@
 		70EC0F811CEB988200B7BAB8 /* RoomieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EC0F801CEB988200B7BAB8 /* RoomieUITests.swift */; };
 		A62146D61CEC225E00EAB641 /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62146D51CEC225E00EAB641 /* RoomModel.swift */; };
 		A62146D81CECBE9400EAB641 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62146D71CECBE9400EAB641 /* Room.swift */; };
+		A67BB5F91CED3625008E8242 /* TaskDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67BB5F81CED3625008E8242 /* TaskDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		70EC0F821CEB988200B7BAB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A62146D51CEC225E00EAB641 /* RoomModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
 		A62146D71CECBE9400EAB641 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		A67BB5F81CED3625008E8242 /* TaskDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				A62146D71CECBE9400EAB641 /* Room.swift */,
 				70CD069E1CEBCA0E00D42611 /* UserModel.swift */,
 				70EC0F641CEB988100B7BAB8 /* Main.storyboard */,
+				A67BB5F81CED3625008E8242 /* TaskDetailsViewController.swift */,
 				70EC0F671CEB988200B7BAB8 /* Assets.xcassets */,
 				70EC0F691CEB988200B7BAB8 /* LaunchScreen.storyboard */,
 				70EC0F6C1CEB988200B7BAB8 /* Info.plist */,
@@ -291,6 +294,7 @@
 				59105D1D1CEBD42500DDDFD5 /* LoginViewController.swift in Sources */,
 				A62146D61CEC225E00EAB641 /* RoomModel.swift in Sources */,
 				59105D1F1CEBDE3300DDDFD5 /* TaskModel.swift in Sources */,
+				A67BB5F91CED3625008E8242 /* TaskDetailsViewController.swift in Sources */,
 				70CD069D1CEBBD9700D42611 /* RegisterViewController.swift in Sources */,
 				70EC0F631CEB988100B7BAB8 /* TaskViewController.swift in Sources */,
 				70CD069F1CEBCA0E00D42611 /* UserModel.swift in Sources */,
