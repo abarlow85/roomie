@@ -52,11 +52,12 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print(roomUsers)
         if segue.identifier == "taskSegue" {
-            let navigationController = segue.destinationViewController as! UINavigationController
-            let controller = navigationController.topViewController as! TaskDetailsViewController
+            let controller = segue.destinationViewController as! TaskDetailsViewController
+//            let controller = navigationController.topViewController as! TaskDetailsViewController
             controller.backButtonDelegate = self
             if let indexPath = taskTableView.indexPathForCell(sender as! UITableViewCell) {
-                controller.taskdetails = roomTasks[indexPath]
+                print(roomTasks[indexPath.row])
+                controller.taskdetails = roomTasks[indexPath.row]
             }
         }
         if segue.identifier == "newTaskSegue" {

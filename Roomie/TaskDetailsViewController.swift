@@ -8,10 +8,10 @@
 
 import UIKit
 
-class TaskDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TaskDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BackButtonDelegate {
     
     @IBOutlet weak var userTableView: UITableView!
-    
+    weak var backButtonDelegate: BackButtonDelegate?
     var taskdetails: NSDictionary?
     var users: [NSDictionary]?
     
@@ -35,6 +35,13 @@ class TaskDetailsViewController: UIViewController, UITableViewDataSource, UITabl
         cell.textLabel?.text =  taskdetails![indexPath.row]!["name"] as! String
         cell.selectionStyle = .None
         return cell
+    }
+    
+    func backButtonPressedFrom(controller: UITableViewController){
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    func back2ButtonPressedFrom(controller: UIViewController){
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
 //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
