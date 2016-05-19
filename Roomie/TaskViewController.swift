@@ -12,11 +12,14 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
     let prefs = NSUserDefaults.standardUserDefaults()
     var roomTasks = [NSDictionary]()
     var roomUsers = [NSDictionary]()
+    
+    @IBOutlet var taskTableView: UITableView!
+    
     override func viewDidLoad() {
         print("taskView")
         let prefs = NSUserDefaults.standardUserDefaults()
         var room = prefs.stringForKey("currentRoom")!
-
+        taskTableView.dataSource = self
         TaskModel.getTasksForRoom(room) {
             data, response, error in
             do {
@@ -29,6 +32,7 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
 //                        print(newTask)
                         self.roomTasks.append(newTask)
                     }
+                    print (self.roomTasks)
                     let users = room["users"] as! NSArray
                     for user in users {
                         let newUser = user as! NSDictionary
@@ -49,8 +53,11 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
         print(roomUsers)
         if segue.identifier == "taskSegue" {
             let navigationController = segue.destinationViewController as! UINavigationController
-            let controller = navigationController.topViewController as! MessageViewController
+            let controller = navigationController.topViewController as! TaskDetailsViewController
             controller.backButtonDelegate = self
+            if let indexPath = taskTableView.indexPathForCell(sender as! UITableViewCell) {
+                controller.taskdetails = roomTasks[indexPath]
+            }
         }
         if segue.identifier == "newTaskSegue" {
             let navigationController = segue.destinationViewController as! UINavigationController
@@ -60,7 +67,25 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
             controller.backButtonDelegate = self
         }
     }
-
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return roomTasks.count
+    }
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = taskTableView.dequeueReusableCellWithIdentifier("TaskCell")
+        if (cell != nil)
+        {
+            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle,
+                                   reuseIdentifier: "TaskCell")
+            cell?.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
+        }
+        cell?.textLabel?.text = roomTasks[indexPath.row]["objective"] as! String
+        cell?.detailTextLabel?.text = roomTasks[indexPath.row ]["expiration_date"] as! String
+        return cell!
+    }
+    
+    override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("taskSegue", sender: taskTableView.cellForRowAtIndexPath(indexPath))
+    }
     
     func backButtonPressedFrom(controller: UITableViewController){
         dismissViewControllerAnimated(true, completion: nil)
