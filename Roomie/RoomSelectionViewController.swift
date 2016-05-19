@@ -15,7 +15,7 @@ extension RoomSelectionViewController: UISearchResultsUpdating {
     }
 }
 
-class RoomSelectionViewController: UITableViewController {
+class RoomSelectionViewController: UITableViewController, BackButtonDelegate {
     
     @IBOutlet weak var RoomSearchBar: UISearchBar!
     
@@ -44,7 +44,15 @@ class RoomSelectionViewController: UITableViewController {
         tableView.tableHeaderView = searchController.searchBar
         showAllRooms()
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "newRoomSegue" {
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let controller = navigationController.topViewController as! newRoomViewController
+            controller.backButtonDelegate = self
+        }
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -133,6 +141,12 @@ class RoomSelectionViewController: UITableViewController {
         }
     }
     
+    func backButtonPressedFrom(controller: UITableViewController){
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    func back2ButtonPressedFrom(controller: UIViewController){
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
 
 

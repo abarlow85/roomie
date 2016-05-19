@@ -27,6 +27,7 @@
 		A62146D61CEC225E00EAB641 /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62146D51CEC225E00EAB641 /* RoomModel.swift */; };
 		A62146D81CECBE9400EAB641 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62146D71CECBE9400EAB641 /* Room.swift */; };
 		A67BB5F91CED3625008E8242 /* TaskDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67BB5F81CED3625008E8242 /* TaskDetailsViewController.swift */; };
+		A67BB5FB1CEE33B6008E8242 /* newRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67BB5FA1CEE33B6008E8242 /* newRoomViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		A62146D51CEC225E00EAB641 /* RoomModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
 		A62146D71CECBE9400EAB641 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		A67BB5F81CED3625008E8242 /* TaskDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewController.swift; sourceTree = "<group>"; };
+		A67BB5FA1CEE33B6008E8242 /* newRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newRoomViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				A62146D71CECBE9400EAB641 /* Room.swift */,
 				70CD069E1CEBCA0E00D42611 /* UserModel.swift */,
 				70EC0F641CEB988100B7BAB8 /* Main.storyboard */,
+				A67BB5FA1CEE33B6008E8242 /* newRoomViewController.swift */,
 				A67BB5F81CED3625008E8242 /* TaskDetailsViewController.swift */,
 				70EC0F671CEB988200B7BAB8 /* Assets.xcassets */,
 				70EC0F691CEB988200B7BAB8 /* LaunchScreen.storyboard */,
@@ -307,6 +310,7 @@
 				59105D211CEBDE4000DDDFD5 /* BackButtonDelegate.swift in Sources */,
 				598F83071CED615800A1158B /* newMessageViewController.swift in Sources */,
 				598F83051CED60DE00A1158B /* MessageModel.swift in Sources */,
+				A67BB5FB1CEE33B6008E8242 /* newRoomViewController.swift in Sources */,
 				598F83011CECE79800A1158B /* newTaskViewController.swift in Sources */,
 				70EC0F611CEB988100B7BAB8 /* AppDelegate.swift in Sources */,
 				59105D1B1CEBD02E00DDDFD5 /* MessageViewController.swift in Sources */,

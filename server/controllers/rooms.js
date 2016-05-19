@@ -44,12 +44,12 @@ module.exports = (function(){
 						if (err) {
 							console.log(err);
 						} else {
-							console.log("room updated");
+							console.log("room updated with user");
 							User.findByIdAndUpdate(req.body.user, {$push: {_room: room._id}}, {new: true}, function(err){
 								if (err) {
 									console.log(err);
 								} else {
-									console.log("user updated");
+									console.log("user updated with room");
 									res.json(newRoom);
 								}
 							})

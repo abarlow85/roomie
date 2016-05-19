@@ -21,6 +21,7 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
 //        print("taskView")
         let prefs = NSUserDefaults.standardUserDefaults()
         var room = prefs.stringForKey("currentRoom")!
+        print("you are in room with id: \(room)")
         taskTableView.dataSource = self
         TaskModel.getTasksForRoom(room) {
             data, response, error in
