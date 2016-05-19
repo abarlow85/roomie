@@ -46,7 +46,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBp-1b-7lA">
-                                <rect key="frame" x="300" y="290" width="0.0" height="21"/>
+                                <rect key="frame" x="300" y="100" width="0.0" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="3sW-R9-po8"/>
                                 </constraints>
@@ -92,6 +92,7 @@
                             <constraint firstItem="4m4-EZ-Hap" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="121" id="Usd-r5-ODZ"/>
                             <constraint firstItem="IeT-ra-LFZ" firstAttribute="top" secondItem="LJX-g3-7Bo" secondAttribute="bottom" constant="4" id="Xe1-NN-0v4"/>
                             <constraint firstItem="IeT-ra-LFZ" firstAttribute="leading" secondItem="Jbt-bR-vdd" secondAttribute="trailing" constant="8" id="Zrz-W3-Y1g"/>
+                            <constraint firstItem="iBp-1b-7lA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="100" id="abe-M1-eaB"/>
                             <constraint firstItem="Jbt-bR-vdd" firstAttribute="top" secondItem="4m4-EZ-Hap" secondAttribute="bottom" constant="29" id="g0f-bE-uvz"/>
                             <constraint firstItem="iBp-1b-7lA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kjc-ci-FhK"/>
                             <constraint firstItem="LJX-g3-7Bo" firstAttribute="leading" secondItem="4m4-EZ-Hap" secondAttribute="trailing" constant="48" id="qp0-KS-IZD"/>
@@ -116,6 +117,7 @@
                                 <exclude reference="Xe1-NN-0v4"/>
                                 <exclude reference="Zrz-W3-Y1g"/>
                                 <exclude reference="tEo-m9-Fet"/>
+                                <exclude reference="SgY-hb-STM"/>
                             </mask>
                         </variation>
                     </view>
@@ -149,7 +151,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBc-k3-sGs">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBc-k3-sGs">
                                 <rect key="frame" x="300" y="285" width="0.0" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="uMu-6f-A2Z"/>
@@ -227,6 +229,7 @@
                             <constraint firstItem="vjB-YT-9Mr" firstAttribute="leading" secondItem="9vd-W2-8pG" secondAttribute="trailing" constant="8" id="AMU-ej-3vB"/>
                             <constraint firstItem="GGp-Nk-b6m" firstAttribute="leading" secondItem="GO0-q2-P2u" secondAttribute="trailing" constant="8" id="ATs-OB-86e"/>
                             <constraint firstItem="9vd-W2-8pG" firstAttribute="leading" secondItem="kYr-mN-JiS" secondAttribute="leadingMargin" constant="40" id="Dl9-Bv-aDb"/>
+                            <constraint firstItem="EBc-k3-sGs" firstAttribute="top" secondItem="kYr-mN-JiS" secondAttribute="topMargin" constant="100" id="EBm-Tj-qsx"/>
                             <constraint firstItem="GO0-q2-P2u" firstAttribute="top" secondItem="9vd-W2-8pG" secondAttribute="bottom" constant="18" id="F1D-0J-W6I"/>
                             <constraint firstItem="GGp-Nk-b6m" firstAttribute="top" secondItem="vjB-YT-9Mr" secondAttribute="bottom" constant="19" id="IeR-Zq-Q0m"/>
                             <constraint firstItem="GO0-q2-P2u" firstAttribute="leading" secondItem="kYr-mN-JiS" secondAttribute="leadingMargin" constant="7" id="K6h-ZV-VQ8"/>
@@ -261,6 +264,7 @@
                                 <exclude reference="F1D-0J-W6I"/>
                                 <exclude reference="pgt-nl-6Zq"/>
                                 <exclude reference="kd0-yO-qb6"/>
+                                <exclude reference="ZJi-uT-LnP"/>
                             </mask>
                         </variation>
                     </view>
@@ -306,7 +310,7 @@
                     <navigationItem key="navigationItem" title="Tasks" id="ewS-tg-yxx" userLabel="Tasks">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="Lvk-2T-KfW">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" identifier="LogoutSegue" id="LWo-Mr-TlG"/>
+                                <segue destination="rra-nX-6fi" kind="show" id="1HR-ak-IUI"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ALa-gC-Qbj">
@@ -994,9 +998,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="535-8b-9fm"/>
-        <segue reference="xRZ-1L-GDB"/>
         <segue reference="gCA-dT-6CM"/>
+        <segue reference="xRZ-1L-GDB"/>
         <segue reference="e92-PH-CUg"/>
     </inferredMetricsTieBreakers>
 </document>
