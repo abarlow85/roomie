@@ -2,49 +2,52 @@ var mongoose = require('mongoose');
 var Task = mongoose.model('Task');
 var User = mongoose.model('User');
 var Room = mongoose.model('Room');
-var Message = mongoose.mode('Message')
+var Message = mongoose.model('Message')
 
 module.exports = (function(){
 	return{
-		show: function(req, res) {
-			Message.find({}, function(err, messages) {
-				if(err){
-					console.log('cannot show all messages');
-				} else{
-					res.json(messages);
-				}
-			})
-		},
+		// show: function(req, res) {
+		// 	Message.find({}, function(err, messages) {
+		// 		if(err){
+		// 			console.log('cannot show all messages');
+		// 		} else{
+		// 			res.json(messages);
+		// 		}
+		// 	})
+		// },
 
 		create: function(req, res) {
-			var message = new Message({content: req.body.content, _room: req.body._room._id, _user: req.body._user._id, _task: req.body._task._id, created_at: new Date});
-			message.save(function(err, message){
+			var message = new Message({content: req.body.content, _room: req.body._room, _user: req.body._user, _task: req.body._task});
+			message.save(function(err){
 				if (err){
 					console.log(err.errors);
 					console.log('cannot create message');
 				} else {
 					console.log('succesfully created message');
-					res.json(message);
 				}
-				Room.findOneAndUpdate({_id:req.body._room._id}, {'$push': {messages: message._id}}).exec(function(err, messages){
+				Room.findOneAndUpdate({_id:req.body._room}, {'$push': {messages: message._id}}).exec(function(err, room){
 					if(err){
 						console.log('error updating message to room');
 					} else{
+						console.log(room)
 						console.log('successfully updated message to room')
 					}
 				})
-				User.findOneAndUpdate({_id:req.body._user._id}, {'$push': {messages: message._id}}).exec(function(err, messages){
+				User.findOneAndUpdate({_id:req.body._user}, {'$push': {messages: message._id}}).exec(function(err, user){
 					if(err){
 						console.log('error updating message to user');
 					} else{
+						console.log(user)
 						console.log('successfully updated message to user')
 					}
 				})
-				Task.findOneAndUpdate({_id:req.body._task._id}, {'$push': {messages: message._id}}).exec(function(err, messages){
+				Task.findOneAndUpdate({_id:req.body._task}, {'$push': {messages: message._id}}, {new: true}).exec(function(err, task){
 					if(err){
 						console.log('error updating message to task');
 					} else{
+						console.log(task)
 						console.log('successfully updated message to task')
+						res.end()
 					}
 				})
 			});

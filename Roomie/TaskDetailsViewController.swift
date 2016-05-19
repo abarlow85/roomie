@@ -14,6 +14,7 @@ class TaskDetailsViewController: UIViewController, UITableViewDataSource, UITabl
     weak var backButtonDelegate: BackButtonDelegate?
     var taskdetails: String?
     var users = [NSDictionary]()
+    let prefs = NSUserDefaults.standardUserDefaults()
     
     @IBAction func backButtonPressed(sender: UIBarButtonItem) {
         backButtonDelegate?.back2ButtonPressedFrom(self)
@@ -33,10 +34,10 @@ class TaskDetailsViewController: UIViewController, UITableViewDataSource, UITabl
                     let taskDue = task["expiration_date"] as! String
                     let newUsers = task["users"] as! NSArray
                     for user in newUsers {
-                        print(user)
                         let newUser = user as! NSDictionary
                         self.users.append(newUser)
                     }
+                    self.prefs.setValue(self.taskdetails, forKey: "currentTaskView")
                     dispatch_async(dispatch_get_main_queue(), {
                         self.taskLabel.text = taskDescription
                         self.dueDateLabel.text = "Due Date: \(taskDue)"

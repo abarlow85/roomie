@@ -19,7 +19,7 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
 
     
     override func viewDidLoad() {
-        print("taskView")
+//        print("taskView")
         let prefs = NSUserDefaults.standardUserDefaults()
         var room = prefs.stringForKey("currentRoom")!
         taskTableView.dataSource = self
@@ -27,7 +27,7 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
             data, response, error in
             do {
                 if let room = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSMutableDictionary {
-                    print("room information:")
+//                    print("room information:")
 //                    print(room)
                     let tasks = room["tasks"] as! NSArray
                     for task in tasks{
@@ -55,7 +55,7 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print(roomUsers)
+//        print(roomUsers)
         if segue.identifier == "taskSegue" {
 //            let controller = segue.destinationViewController as! TaskDetailsViewController
             let barViewController = segue.destinationViewController as! UITabBarController
@@ -63,7 +63,7 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
             let controller = navController.topViewController as! TaskDetailsViewController
             controller.backButtonDelegate = self
             if let indexPath = taskTableView.indexPathForCell(sender as! UITableViewCell) {
-                print(roomTasks[indexPath.row]["_id"])
+//                print(roomTasks[indexPath.row]["_id"])
                 let id = roomTasks[indexPath.row]["_id"] as! String
                 controller.taskdetails = id
             }
