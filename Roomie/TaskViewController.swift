@@ -11,9 +11,8 @@ import UIKit
 class TaskViewController: UITableViewController, BackButtonDelegate {
     let prefs = NSUserDefaults.standardUserDefaults()
     let dateFormatter = NSDateFormatter()
-    var roomTasks = [NSDictionary]()
+    var roomTasks = [NSMutableDictionary]()
     var roomUsers = [NSDictionary]()
-    
     
     @IBOutlet var taskTableView: UITableView!
 
@@ -89,15 +88,50 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
             cell?.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
         }
         
-        cell?.textLabel?.text = roomTasks[indexPath.row]["objective"] as! String
+        var completed = self.roomTasks[indexPath.row]["completed"]! as! String
+        print(completed)
+        if completed == "notcompleted" {
+            cell?.textLabel?.text = roomTasks[indexPath.row]["objective"] as! String
+        } else {
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: roomTasks[indexPath.row]["objective"] as! String)
+            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
+            cell?.textLabel?.attributedText = attributeString;
+        
+        }
+        
         let timeLeft = String(roomTasks[indexPath.row ]["timeLeft"]!)
         cell?.detailTextLabel?.text = timeLeft
         return cell!
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            let task = roomTasks[indexPath.row]
+//        if editingStyle == .Delete {
+//            let task = roomTasks[indexPath.row]
+//            TaskModel.removeTask(task) {
+//                data, response, error in
+//                do {
+//                    if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSMutableDictionary {
+//                        print(jsonResult)
+//                        self.roomTasks.removeAtIndex(indexPath.row)
+//                        dispatch_async(dispatch_get_main_queue(), {
+//                            self.tableView.reloadData()
+//                        })
+//                    }
+//
+//                } catch {
+//                    print("Something went wrong")
+//                }
+////                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//            }
+//        }
+//        // remove the mission at indexPath
+//        // reload the table view
+    }
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { (action, indexPath) in
+            // delete item at indexPath
+            let task = self.roomTasks[indexPath.row]
             TaskModel.removeTask(task) {
                 data, response, error in
                 do {
@@ -108,16 +142,39 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
                             self.tableView.reloadData()
                         })
                     }
-
+                    
                 } catch {
                     print("Something went wrong")
                 }
-//                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                //                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+
+        }
+        
+        let share = UITableViewRowAction(style: .Normal, title: "Completed") { (action, indexPath) in
+            // complete item at indexPath
+            let task = self.roomTasks[indexPath.row]
+            TaskModel.updateTaskToCompleted(task){
+                data, response, error in
+                do {
+                    if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSMutableDictionary {
+                        print(jsonResult)
+                        self.roomTasks[indexPath.row]["completed"] = "completed"
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.tableView.reloadData()
+                        })
+                    }
+                    
+                } catch {
+                    print("Something went wrong")
+                }
             }
             
         }
-        // remove the mission at indexPath
-        // reload the table view
+        
+        share.backgroundColor = UIColor.blueColor()
+        
+        return [delete, share]
     }
     
     
@@ -167,7 +224,6 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
     func back2ButtonPressedFrom(controller: UIViewController){
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
 
 
 }

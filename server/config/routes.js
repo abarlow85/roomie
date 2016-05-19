@@ -53,8 +53,6 @@ module.exports = function(app, passport) {
     })
     
 	app.post('/tasks/create', function(req, res){
-		console.log("creating task");
-		// console.log(req.body);
 		tasks.create(req, res);
 	})
 
@@ -63,10 +61,13 @@ module.exports = function(app, passport) {
 	})
 
 	app.post('/tasks/remove', function(req, res){
-		console.log("getting to remove task")
 		tasks.remove(req, res);
 	})
-//Message Route
+
+	app.post('/tasks/complete', function(req, res){
+		tasks.complete(req, res);
+	})
+// Message routes
 	app.post('/messages/create', function (req, res){
 		messages.create(req, res);
 	})
