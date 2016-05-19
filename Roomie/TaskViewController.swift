@@ -231,7 +231,7 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
             if timeLeft <= 0 && completed == "notcompleted" {
                 timeLeftString = "Task not completed"
             }
-            if timeLeft <= 0 && completed == "completed" {
+            if completed == "completed" {
                 timeLeftString = "Task completed"
             } else {
                 timeLeftString += "left"

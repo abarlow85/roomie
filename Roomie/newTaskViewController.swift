@@ -83,6 +83,9 @@ class newTaskViewController: UIViewController, UITableViewDataSource, UITableVie
         userTableView.dataSource = self
         userTableView.delegate = self
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -106,6 +109,12 @@ class newTaskViewController: UIViewController, UITableViewDataSource, UITableVie
         let userId = userArray![indexPath.row]["_id"] as! String
         let userIndex = responsibleUsers.indexOf(userId)
         responsibleUsers.removeAtIndex(userIndex!)
+    }
+    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     
