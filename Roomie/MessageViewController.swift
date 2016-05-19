@@ -50,7 +50,6 @@ class MessageViewController: UITableViewController, BackButtonDelegate {
         }
     }
 
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
@@ -65,9 +64,21 @@ class MessageViewController: UITableViewController, BackButtonDelegate {
         cell!.selectionStyle = .None
         cell!.backgroundColor = UIColor(red:197/255.0, green:224/255.0, blue:216/255.0, alpha: 1.0)
         cell?.textLabel?.text = messages[indexPath.row]["content"] as! String
+        cell?.textLabel?.lineBreakMode =   .ByWordWrapping
+        cell?.textLabel?.numberOfLines = 0;
         cell?.detailTextLabel?.text = messages[indexPath.row ]["_user"]!["name"] as! String
+        
         return cell!
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     func back2ButtonPressedFrom(controller: UIViewController){
         dismissViewControllerAnimated(true, completion: nil)
     }

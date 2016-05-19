@@ -652,6 +652,7 @@
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submitButtonPressed:" destination="DNh-eW-61h" eventType="touchUpInside" id="kLc-rB-ICb"/>
+                                    <segue destination="Lrs-Av-JIe" kind="show" identifier="MessageAddedSegue" id="K7C-Ks-OmU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -675,7 +676,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="commentTextField" destination="Kpi-PF-VTp" id="knE-Lp-4Tu"/>
-                        <segue destination="EU3-EA-1Es" kind="show" identifier="MessageAddedSegue" id="41v-3G-CCO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Olt-My-YKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -867,7 +867,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="4654" y="808"/>
+            <point key="canvasLocation" x="4639" y="970"/>
         </scene>
         <!--Add a room-->
         <scene sceneID="9oe-S2-cg4">
@@ -1125,8 +1125,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="e92-PH-CUg"/>
         <segue reference="gCA-dT-6CM"/>
-        <segue reference="cec-kJ-sXF"/>
+        <segue reference="uMT-CT-Pnh"/>
+        <segue reference="K7C-Ks-OmU"/>
     </inferredMetricsTieBreakers>
 </document>

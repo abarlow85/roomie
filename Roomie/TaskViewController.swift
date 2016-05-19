@@ -197,7 +197,6 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
         }
         
         share.backgroundColor = UIColor.blueColor()
-        
         return [delete, share]
     }
     
@@ -207,6 +206,7 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         for newTask in roomTasks {
             let dueDateString = newTask["expiration_date"] as! String
+            let completed = newTask["completed"] as! String
             let dueDate = self.dateFormatter.dateFromString(dueDateString)!
             var timeLeft = Int(dueDate.timeIntervalSinceDate(now))
             let days = timeLeft / (60*60*24)
@@ -228,8 +228,11 @@ class TaskViewController: UITableViewController, BackButtonDelegate {
             if minutes >= 0 {
                 timeLeftString += "\(minutes)m "
             }
-            if timeLeft <= 0 {
+            if timeLeft <= 0 && completed == "notcompleted" {
                 timeLeftString = "Task not completed"
+            }
+            if timeLeft <= 0 && completed == "completed" {
+                timeLeftString = "Task completed"
             } else {
                 timeLeftString += "left"
             }

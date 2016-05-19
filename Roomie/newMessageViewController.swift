@@ -27,9 +27,10 @@ class newMessageViewController: UIViewController{
             do {
 //                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSMutableDictionary {
 //                    print(jsonResult)
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.performSegueWithIdentifier("MessageAddedSegue", sender: self)
-                    })
+//                    dispatch_async(dispatch_get_main_queue(), {
+//                        self.performSegueWithIdentifier("MessageAddedSegue", sender: self)
+                
+//                    })
 //                }
             
             }catch {
